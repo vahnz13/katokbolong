@@ -1,0 +1,96 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <div class="ktz-inner-content">
+        <div class="container">
+            <div class="row">
+                <section class="col-md-12">
+                    <div class="row">
+                        <div role="main" class="main col-md-12">
+                            <section class="new-content">
+                                <div class="widget-title">
+                                    <h1 class="ktz-titlepage">Download {{ download['title'] }} MP3 &amp; MP4</h1>
+                                </div>
+                                <div class="menu">
+                                    <center>
+                                        <table width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width:150px; border:none"><img width="150px" src="{{ photonResize('https://ytimg.googleusercontent.com/vi/' ~ download['id'] ~ '/mqdefault.jpg', '150', '150', 2) }}"></td>
+                                                    <td valign="top" style="padding-left:10px; border:none">
+                                                        Name : {{ download['title'] }} 
+                                                        <br/> Duration : {{ download['duration'] }} 
+                                                        <br/> Size : {{ download['size'] }} 
+                                                        <br/> Views : {{ download['viewCount'] }} 
+                                                        <br/> Sample Rate: 48kHz
+                                                        <br/> Audio Channels: Stereo
+                                                        <br/> Update : {{ toIsoFormat(download['publishedAt'], 'id_ID') }}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </center>
+                                    <div class="line"></div>
+                                    <center>
+                                        Click 2X Below Download Button!! <font color="red"><strong>All Links is</strong></font> <font color="green"><strong>Active</strong></font>
+                                        <br/>Click <font color="#0087cf"><strong>Download MP3</strong></font> -&gt; Convert -&gt; Wait a minute -&gt; Click <font color="#57b792"><strong>Download</strong></font>
+                                        <br/>
+                                        <br/>
+                                        <p style="color:red">↓↓↓↓↓↓↓</p>
+                                            <iframe style="max-height:50px;border:0px;max-width: 210px;overflow:hidden;" scrolling="no" src="https://yt-btn.blogspot.com/?v={{ download['id'] }}&t=ytapi" width="210" height="40" frameborder="0" marginwidth="0" marginheight="0"></iframe>
+                                        <br/>
+                                        <p style="color:red">↓↓↓↓↓↓↓</p>
+                                        <br/>
+                                            <a style="max-height:50px;border:0px;max-width: 210px;overflow:hidden;" href="https://www.y2mate.com/download-youtube/{{ download['id'] }}?source=go-lagu.com" class="download-album" rel="nofollow" width="210" height="40"> <i class="glyphicon glyphicon-film"></i> Download MP4</a>
+                                        <br/>
+                                        <br/>
+                                    </center>
+                                    <div class="line"></div>
+                                    <p style="font-size: 12px; font-style: italic; margin-bottom: 5px">
+                                        <marquee>Download {{ download['title'] }} MP3 &amp; MP4</marquee>
+                                        <br/>
+                                    </p>
+                                    <style>
+                                        .line {
+                                            border-bottom: 1px solid #ccc;
+                                            margin: 10px 0;
+                                        }
+                                        
+                                        .backbtn {
+                                            color: #fff;
+                                            border: none;
+                                        }
+                                        
+                                        .backbtn,
+                                        .homebtn {
+                                            display: block;
+                                            font-style: normal;
+                                            width: 70px;
+                                            text-align: center;
+                                            margin: auto;
+                                            margin-bottom: 20px;
+                                            margin-top: 20px;
+                                            color: #0070ff;
+                                            font-size: 15px;
+                                            font-weight: 700;
+                                            border: 1px solid #0070ff;
+                                            border-radius: 3px;
+                                        }
+                                        .backbtn:before,
+                                        .homebtn:before {
+                                            content: '\f060';
+                                            font-family: FontAwesome;
+                                            margin-right: 5px;
+                                            font-weight: 400;
+                                        }
+                                    </style>
+                                    <a href="/" class="backbtn">Back</a>
+                                </div>
+                                <nav id="nav-index"></nav>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}

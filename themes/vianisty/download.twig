@@ -1,0 +1,47 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <main class="col-md-12 mb-4">
+        <article>
+            <h1 class="h5 border-bottom-x pb-2">Download {{ download['title'] }}  MP3</h1>
+            <div class="text-center">
+                <p>
+                    <iframe rel="nofollow" class="aligncenter" width="90%" src="https://www.youtube.com/embed/{{ download['id'] }}" frameborder="0" allowfullscreen=""></iframe>
+                </p>
+                <br/>
+                <br/>
+                <div class="download">
+                    <h4 class="widget-title">How to Download:</h4></div>
+                <div class="info noleft lm-bawah text-left">
+                    <ul style="list-style:none">
+                        <li> Click 2x </li>
+                        <li> Wait until the converting is complete, then click again! </li>
+                        <li> If it's slow or error, use the alternative download link! </li>
+                        <li> <strong> If a popunder / newtab ad appears, ignore and return to this page! </strong> </li>
+                    </ul>
+                </div>
+                <br/>
+                <br/>
+                <p style="color:red">↓↓↓↓↓↓↓</p>
+                <p>
+                    <iframe style="max-height:40px;border:0px;max-width: 310px;overflow:hidden;" scrolling="no" src="https://yt-btn.blogspot.com/?v={{ download['id'] }}&t=ytapi" frameborder="0" marginwidth="0" marginheight="0"></iframe>
+                </p>
+                <p style="color:red">↑↑↑↑↑↑↑</p>
+                <h4>Alternative Server</h4>
+                <p style="color:red">↓↓↓↓↓↓↓</p>
+                <p>
+                    <iframe style="max-height:40px;border:0px;max-width: 310px;overflow:hidden;" scrolling="no" src="https://yt-btn.blogspot.com/?v={{ download['id'] }}&t=recordmp3" frameborder="0" marginwidth="0" marginheight="0"></iframe>
+                </p>
+                <p style="color:red">↑↑↑↑↑↑↑</p>
+                <p><span style="color:red">→</span> <a rel="nofollow" href="{{ single_permalink(download['id'], download['title']) }}"><strong>Back to Main Page</strong></a></p>
+
+                <div id="share" class="nxt-share download">
+                    <h4 class="widget-title"><span>Share This Page:</span></h4>
+                    <a rel="nofollow noreferrer" href="https://www.facebook.com/sharer/sharer.php?url={{ canonical_url() }}" target="_blank"><img src="{{ themes('img/fb.png') }}" title="Share to Facebook" alt="Share to Facebook" width="40" height="40"></a>
+                    <a rel="nofollow noreferrer" href="https://twitter.com/intent/tweet?text=&url={{ canonical_url() }}" target="_blank"><img src="{{ themes('img/tw.png') }}" title="Share to Twitter" alt="Share to Twitter" width="40" height="40"></a>
+                    <a rel="nofollow noreferrer" href="https://api.whatsapp.com/send?text={{ canonical_url() }}" target="_blank"><img src="{{ themes('img/wa.png') }}" title="Share to WhatsApp" alt="Share to WhatsApp" width="40" height="40"></a>
+                    <a rel="nofollow noreferrer" href="https://social-plugins.line.me/lineit/share?url={{ canonical_url() }}" target="_blank"><img src="{{ themes('img/line.png') }}" title="Share to Line" alt="Share to Line" width="40" height="40"></a>
+                </div>
+            </div>
+        </article>
+    </main>
+{% endblock %}

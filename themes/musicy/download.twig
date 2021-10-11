@@ -1,0 +1,57 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+   <main>
+        <div class="container">
+            <form id="search-form" method="GET" action="/">
+                <h3>Temukan lagu, video dibawah! {{ base_url }}</h3>
+                <div>
+                    <input type="text" autocomplete="off" name="q" required="" spellcheck="false" placeholder="" value="" />
+                    <button type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>
+                </div>
+            </form>
+            <div class="main-content d-flex">
+                <div id="content" class="single flex-fill">
+                <h1 class="page-title text-center">Download {{ download['title'] }}  MP3</h1>
+                    <div class="content text-center">
+                    <p>
+                        <iframe rel="nofollow" class="aligncenter" width="90%" src="https://www.youtube.com/embed/{{ download['id'] }}" frameborder="0" allowfullscreen=""></iframe>
+                    </p>
+                    <br/>
+                    <br/>
+                    <div class="download">
+                        <h4 class="widget-title">How to Download:</h4></div>
+                    <div class="info noleft lm-bawah text-left">
+                        <ul>
+                            <li>klik 2x</li>
+                            <li>Tunggu sampai converting selesai, lalu klik sekali lagi!</li>
+                            <li>Jika lemot atau error, gunakan link download alternatif!</li>
+                            <li><strong>Jika muncul iklan popunder / newtab, abaikan dan kembali kehalaman ini!</strong></li>
+                        </ul>
+                    </div>
+                    <br/>
+                    <br/>
+                    <p style="color:red">↓↓↓↓↓↓↓</p>
+                    <p>
+                        <iframe style="max-height:40px;border:0px;max-width: 310px;overflow:hidden;" scrolling="no" src="https://yt-btn.blogspot.com/?v={{ download['id'] }}&t=ytapi" frameborder="0" marginwidth="0" marginheight="0"></iframe>
+                    </p>
+                    <p style="color:red">↑↑↑↑↑↑↑</p>
+                    <h4>Alternative Server</h4>
+                    <p style="color:red">↓↓↓↓↓↓↓</p>
+                    <p>
+                        <iframe style="max-height:40px;border:0px;max-width: 310px;overflow:hidden;" scrolling="no" src="https://yt-btn.blogspot.com/?v={{ download['id'] }}&t=recordmp3" frameborder="0" marginwidth="0" marginheight="0"></iframe>
+                    </p>
+                    <p style="color:red">↑↑↑↑↑↑↑</p>
+                    <p><span style="color:red">→</span> <a rel="nofollow" href="{{ single_permalink(download['id'], download['title']) }}"><strong>Link download lagu utama</strong></a></p>
+
+                    <div id="share" class="nxt-share download">
+                        <h4 class="widget-title"><span>Bagikan halaman ini:</span></h4>
+                        <a rel="nofollow noreferrer" href="https://www.facebook.com/sharer/sharer.php?url={{ canonical_url() }}" target="_blank"><img src="{{ themes('img/fb.png') }}" title="Share to Facebook" alt="Share to Facebook" width="40" height="40"></a>
+                        <a rel="nofollow noreferrer" href="https://twitter.com/intent/tweet?text=&url={{ canonical_url() }}" target="_blank"><img src="{{ themes('img/tw.png') }}" title="Share to Twitter" alt="Share to Twitter" width="40" height="40"></a>
+                        <a rel="nofollow noreferrer" href="https://api.whatsapp.com/send?text={{ canonical_url() }}" target="_blank"><img src="{{ themes('img/wa.png') }}" title="Share to WhatsApp" alt="Share to WhatsApp" width="40" height="40"></a>
+                        <a rel="nofollow noreferrer" href="https://social-plugins.line.me/lineit/share?url={{ canonical_url() }}" target="_blank"><img src="{{ themes('img/line.png') }}" title="Share to Line" alt="Share to Line" width="40" height="40"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

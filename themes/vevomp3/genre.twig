@@ -1,0 +1,64 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <main>
+        <div class="container">
+            <form id="search-form" method="GET" action="/">
+                <h3>Temukan lagu, video dibawah!</h3>
+                <div>
+                    <input type="text" autocomplete="off" name="q" required spellcheck="false" placeholder="" value="" />
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+            <div class="main-content d-flex">
+                <div id="content" class="flex-fill">
+                    <section class="section section-tracks">
+                        <h3 class="section-title">
+                            <span><i class="fas fa-fire"></i>Top Songs {{ name }}</span>
+                        </h3>
+                        <div class="items">
+                        {% for i, item in genre['items'] %}
+                            <div class="item d-flex align-items-center">
+                                <div class="image">
+                                    <img
+                                        src="{{ photonResize(item['image'], '56', '56', 0) }}"
+                                        alt="{{ item['title'] }}"
+                                        title="{{ item['title'] }}"
+                                    />
+                                </div>
+                                <div class="detail flex-fill">
+                                    <h2>
+                                        <a title="{{ item['title'] }}" href="{{ search_permalink(item['title']) }}">{{ item['title'] }}</a>
+                                    </h2>
+                                    <p>
+                                        <a title="{{ item['artist'] }}" href="{{ search_permalink(item['title']) }}">{{ item['artist'] }}</a>
+                                    </p>
+                                </div>
+                                <div class="rank">
+                                    #{{ i+1 }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </div>
+                    </section>
+                </div>
+                <div id="sidebar">
+                    <aside class="widget widget-terms">
+                        <h3 class="section-title">
+                            <span><i class="fas fa-search"></i>Recent Search</span>
+                        </h3>
+                        <ul>
+                        {% for item in getTerms('30')['items'] %}
+                            <li>
+                                <a href="{{ search_permalink(item) }}" class="d-flex align-items-center">
+                                    <i class="fas fa-music"></i>
+                                    <span class="flex-fill">{{ ucwords(item) }}</span>
+                                </a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

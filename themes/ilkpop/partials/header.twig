@@ -1,0 +1,21 @@
+        <header class="ktz-mainheader">
+            <div class="header-wrap">
+                <div class="container">
+                    <div class="clearfix">
+                        <div class="ktz-logo">
+                            <h1 class="site-title"><a href="{{ site_url() }}" title="{{ option('site_name') }} - {{ option('site_tagline') }}">{{ option('site_name') }}</a></h1>
+                            <div class="desc-hide">{{ option('site_tagline') }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="mp3search">
+            <div class="finds">Temukan lagu yang kamu cari dibawah lalu <em>tekan enter!</em></div>
+            <form method="GET" action="/">
+                <div class="ktz-search has-feedback">
+                    <label class="control-label sr-only" for="inputSuccess5">Search</label><input type="text" name="q" class="form-control btn-box" value="" placeholder="Discover songs you are looking for here!" required="" />
+                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+            </form>
+        </div>

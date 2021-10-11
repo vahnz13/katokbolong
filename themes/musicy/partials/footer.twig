@@ -1,0 +1,37 @@
+       <footer id="footer">
+            <div class="container">
+                <div class="menu-footer-menu-container">
+                    <ul id="menu-footer-menu" class="menu">
+                        <li id="menu-item-30" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30"><a href="/">Home</a></li>
+                        <li id="menu-item-29" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29"><a href="{{ page_permalink('about') }}">Tentang Kami</a></li>
+                    </ul>
+                </div>
+                <div class="credit">
+                    &copy; {{ "now"|date("Y") }} {{ option('site_name') }} - Download Lagu Mp3, Video Mp4 Gratis
+                </div>
+            </div>
+        </footer>
+        <script type='text/javascript' src='{{ themes('js/scripts.js') }}'></script>
+        <script>
+            $(document).ready(function(){
+                $('.comments').trigger('click');
+            });
+            $(document).on('click', '.comments', function() {
+                $.ajax({
+                    type:'GET',
+                    url:"/api/comments?id={{ search['items'][0]['id'] }}&limit=10",
+                    success: (function (data) {
+                        $.each(data.items, function (i, item) {
+                            $('.comments').append(
+                                '<b>' + item.authorDisplayName + '</b><br/>' + item.textDisplay + '<br/><br/>'
+                            );
+                        });
+                        
+                    }),error: function (data) {
+                        $('.comments').append(
+                            'Falied Load Data..'
+                        );
+                    }
+                });
+            });
+        </script>

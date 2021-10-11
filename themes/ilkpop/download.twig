@@ -1,0 +1,62 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <div class="ktz-inner-content">
+        <div class="container">
+            <div class="ktz-aftermenubanner"><!--header ads--></div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <section class="col-md-12">
+                    <div class="row">
+                        <div role="main" class="main col-md-12">
+                            <section class="new-content">
+                                <article id="post" class="ktz-single post">
+                                    <div class="ktz-single-box">
+                                        <div class="entry-body">
+                                            <h1 class="entry-title clearfix">Download {{ download['title'] }} Mp3</h1>
+                                            <div class="metasingle-aftertitle">
+                                            </div>
+                                            <div class="entry-content ktz-wrap-content-single clearfix ktz-post">
+                                                <div class="text-center">
+                                                    <p>
+                                                        <iframe rel="nofollow" class="aligncenter" width="90%" src="https://www.youtube.com/embed/{{ download['id'] }}" frameborder="0" allowfullscreen=""></iframe>
+                                                    </p>
+                                                    <br/>
+                                                    <br/>
+                                                    <div class="download">
+                                                        <h4 class="tag">How to Download:</h4></div>
+                                                    <div class="info noleft lm-bawah text-left">
+                                                        <ul>
+                                                            <li>klik 2x</li>
+                                                            <li>Tunggu sampai converting selesai, lalu klik sekali lagi!</li>
+                                                            <li>Jika lemot atau error, gunakan link download alternatif!</li>
+                                                            <li><strong>Jika muncul iklan popunder / newtab, abaikan dan kembali kehalaman ini!</strong></li>
+                                                        </ul>
+                                                    </div>
+                                                    <br/>
+                                                    <br/>
+                                                    <p style="color:red">↓↓↓↓↓↓↓</p>
+                                                    <p>
+                                                        <iframe style="max-height:40px;border:0px;max-width: 310px;overflow:hidden;" scrolling="no" src="https://yt-btn.blogspot.com/?v={{ download['id'] }}&t=ytapi" frameborder="0" marginwidth="0" marginheight="0"></iframe>
+                                                    </p>
+                                                    <p style="color:red">↑↑↑↑↑↑↑</p>
+                                                    <h4>Alternative Server</h4>
+                                                    <p style="color:red">↓↓↓↓↓↓↓</p>
+                                                    <p>
+                                                        <iframe style="max-height:40px;border:0px;max-width: 310px;overflow:hidden;" scrolling="no" src="https://yt-btn.blogspot.com/?v={{ download['id'] }}&t=recordmp3" frameborder="0" marginwidth="0" marginheight="0"></iframe>
+                                                    </p>
+                                                    <p style="color:red">↑↑↑↑↑↑↑</p>
+                                                    <p><span style="color:red">→</span> <a rel="nofollow" href="{{ single_permalink(download['id'], download['title']) }}"><strong>Link download lagu utama</strong></a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}

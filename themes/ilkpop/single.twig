@@ -1,0 +1,146 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <div class="ktz-inner-content">
+        <div class="container">
+            <div class="ktz-aftermenubanner"><!--header ads--></div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <section class="col-md-12">
+                    <div class="row">
+                        <div role="main" class="main col-md-9">
+                            <section class="new-content">
+                                <article id="post" class="ktz-single post">
+                                    <div class="ktz-single-box">
+                                        <div class="entry-body">
+                                            <h1 class="entry-title clearfix">Download {{ single['title'] }} MP3</h1>
+                                            <div class="metasingle-aftertitle">
+                                                <div class="ktz-inner-metasingle">
+                                                    <span class="entry-author vcard">
+                                                        Popularized By {{ single['channelTitle'] }}
+                                                    </span>
+                                                    <span class="entry-date updated">
+                                                        Uploaded On <a rel="bookmark"><time datetime="{{ single['createdAt'] }}" pubdate="">{{ toIsoFormat(single['createdAt'], 'id_ID') }}</time></a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="entry-content ktz-wrap-content-single clearfix ktz-post">
+                                                <p align="justify">
+                                                    <img
+                                                        src="{{ photonResize('https://ytimg.googleusercontent.com/vi/' ~ single['id'] ~ '/mqdefault.jpg', '500', '500', 2) }}"
+                                                        alt="{{ single['title'] }} MP3"
+                                                        width="300"
+                                                        height="300"
+                                                        class="aligncenter size-medium"
+                                                        scale="0"
+                                                    />
+                                                </p>
+                                                <div class="embed-audio-mp3">
+                                                    <audio src="https://m.youtube.com/watch?v={{ single['id'] }}" type="video/youtube" style="width: 90%; margin-bottom: -5px;">Your browser does not support the audio element</audio>
+                                                </div>
+                                                <p align="justify" id="notif">
+                                                    Download lagu <strong>{{ single['title'] }}</strong> MP3 dapat kamu download secara gratis di {{ option('site_name') }}. Details lagu {{ single['title'] }} bisa kamu
+                                                    lihat di tabel, untuk link download {{ single['title'] }} berada dibawah.
+                                                </p>
+                                                <table width="90%" class="exo">
+                                                    <tbody>
+                                                        <tr valign="top">
+                                                            <td width="30%"><b>Title</b></td>
+                                                            <td id="song_title">{{ single['title'] }}</td>
+                                                        </tr>
+                                                        <tr valign="top">
+                                                            <td width="30%"><b>Duration</b></td>
+                                                            <td id="length">{{ single['duration'] }}</td>
+                                                        </tr>
+                                                        <tr valign="top">
+                                                            <td width="30%"><b>File Format</b></td>
+                                                            <td id="file_format">mp3</td>
+                                                        </tr>
+                                                        <tr valign="top">
+                                                            <td width="30%"><b>Mime Type</b></td>
+                                                            <td id="mime">audio/mpeg</td>
+                                                        </tr>
+                                                        <tr valign="top">
+                                                            <td width="30%"><b>Bitrate</b></td>
+                                                            <td id="bitrate">128 kbps</td>
+                                                        </tr>
+                                                        <tr valign="top">
+                                                            <td width="20%"><b>Size</b></td>
+                                                            <td id="size">{{ single['size'] }}</td>
+                                                        </tr>
+                                                        <tr valign="top">
+                                                            <td width="30%"><b>Views</b></td>
+                                                            <td id="views">{{ single['viewCount'] }}x</td>
+                                                        </tr>
+                                                        <tr valign="top">
+                                                            <td width="20%"><b>Uploaded on</b></td>
+                                                            <td id="date_upload">{{ toIsoFormat(single['publishedAt'], 'id_ID') }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <center>
+                                                    <br />
+                                                    <div class="alert alert-warning text-center"><b>Silahkan klik salah satu tombol yg berfungsi, Jika download belum juga dimulai silahkan klik lagi sampai bisa 😘</b></div>
+                                                    <p class="download">
+                                                        <a class="btn btn-custom green btn-sm" rel="nofollow" href="{{ download_permalink(single['id']) }}"><span class="glyphicon glyphicon-download"></span> Download Mp3 </a>
+                                                    </p>
+                                                </center>
+                                                <blockquote>
+                                                    <p align="justify">
+                                                        {{ autop(single['description'])|raw }}
+                                                    </p>
+                                                </blockquote>
+                                                <p class="ktz-tagcontent">
+                                                    Tags:
+                                                    {% for item in single['tags'] %}
+                                                        <a href="{{ canonical_url() }}" title="{{ item }}">#{{ item }}</a>
+                                                    {% endfor %}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </section>
+                        </div>
+                        <div class="sbar col-md-3 widget-area wrapwidget" role="complementary">
+                            <aside id="top-posts-3" class="widget widget_top-posts">
+                                <h4 class="widget-title"><span class="ktz-blocktitle">Related Tracks</span></h4>
+                                <ul class="widgets-list-layout no-grav">
+                                {% for item in getRelated( single['id'], '10')['items'] %}
+                                    <li>
+                                        <a href="{{ single_permalink(item['id'], item['title']) }}" title="{{ item['title'] }}" class="bump-view" data-bump-view="tp">
+                                            <img
+                                                style="width: 39px; height: 39px;"
+                                                src="{{ photonResize('https://ytimg.googleusercontent.com/vi/' ~ item['id'] ~ '/mqdefault.jpg', '50', '50', 2) }}"
+                                                class="widgets-list-layout-blavatar"
+                                                alt="{{ item['title'] }}"
+                                                data-pin-nopin="true"
+                                                srcset="{{ photonResize('https://ytimg.googleusercontent.com/vi/' ~ item['id'] ~ '/mqdefault.jpg', '50', '50', 2) }}"
+                                                src-orig="{{ photonResize('https://ytimg.googleusercontent.com/vi/' ~ item['id'] ~ '/mqdefault.jpg', '50', '50', 2) }}"
+                                                scale="1.25"
+                                            />
+                                        </a>
+                                        <div class="widgets-list-layout-links">
+                                            <a href="{{ single_permalink(item['id'], item['title']) }}" class="bump-view" data-bump-view="tp">{{ item['title'] }}</a><br />
+                                            <small>{{ item['size'] }}/ {{ item['viewCount'] }} Hits</small>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                            </aside>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.9/mediaelementplayer.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.9/mediaelement-and-player.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('audio').mediaelementplayer();
+        })
+    </script>
+{% endblock %}

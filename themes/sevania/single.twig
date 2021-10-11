@@ -1,0 +1,56 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <div class="musik">
+        <h2 class="tag">Download {{ single['title'] }} Mp3</h2>
+    </div>
+    <div class="menu">
+        <div class="post">
+            <div class="lagu" align="justify">
+                <iframe
+                    src="https://www.youtube.com/embed/{{ single['id'] }}?feature=player_detailpage?rel=0&amp;autoplay=0"
+                    sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation"
+                    allowfullscreen="true"
+                    allowtransparency="true"
+                    frameborder="0"
+                    width="100%"
+                    height="300"
+                ></iframe>
+            </div>
+        </div>
+        <div class="post">
+            <div class="lagu" align="justify">
+                <p class="center">
+                    <span class="btn-lime"> <a href="{{ download_permalink(single['id']) }}" rel="nofollow" target="_blank">DOWNLOAD</a></span><br />
+                </p>
+            </div>
+        </div>
+        <div class="post">
+            <div class="lagu text-center">
+                {{ autop(single['description'])|raw }}
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <h2 class="tag">Lagu Bagus Lainnya</h2>
+        <div class="post">
+            <ul>
+            {% for item in getRelated( single['id'], '10')['items'] %}
+                <li>
+                    <a href="{{ single_permalink(item['id'], item['title']) }}" title="{{ item['title'] }}">{{ item['title'] }}</a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        <h2 class="tag">Latest Download</h2>
+        <div class="post">
+            <ul>
+            {% for item in getTerms('20')['items'] %}
+                <li>
+                    <a href="{{ search_permalink(item) }}" title="{{ ucwords(item) }}">{{ ucwords(item) }}</a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="clear"></div>
+{% endblock %}

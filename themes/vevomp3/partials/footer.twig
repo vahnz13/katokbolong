@@ -1,0 +1,31 @@
+    <div class="footer">
+        <b>
+            &copy; {{ "now"|date("Y") }} <span class="mee"><a href="/">{{ option('site_name') }}</a> / {{ option('site_tagline') }}</span>, All Rights Reserved.
+        </b>
+        <br />
+        <span class="mee"><a href="{{ page_permalink('about') }}">About </a></span>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $('.comments').trigger('click');
+        });
+        $(document).on('click', '.comments', function() {
+            $.ajax({
+                type:'GET',
+                url:"/api/comments?id={{ search['items'][0]['id'] }}&limit=10",
+                success: (function (data) {
+                    $.each(data.items, function (i, item) {
+                        $('.comments').append(
+                            '<b>' + item.authorDisplayName + '</b><br/>' + item.textDisplay + '<br/><br/>'
+                        );
+                    });
+                    
+                }),error: function (data) {
+                    $('.comments').append(
+                        'Falied Load Data..'
+                    );
+                }
+            });
+        });
+    </script>

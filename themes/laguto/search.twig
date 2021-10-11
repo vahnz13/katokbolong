@@ -1,0 +1,85 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <div class="ktz-inner-content">
+        <div class="container">
+            <div class="row">
+                <section class="col-md-12">
+                    <div class="row">
+                        <div role="main" class="main col-md-9">
+                            <section class="new-content">
+                                <div class="entry-body">
+                                    <h1 class="entry-title clearfix">Download {{ query }} MP3</h1>
+                                    <div class="metasingle-aftertitle">
+                                        <div class="ktz-inner-metasingle">
+                                            <span class="entry-author vcard">
+                                                Popularized By: {{ search['items'][0]['channelTitle'] }}
+                                            </span>
+                                            <span class="entry-date updated">
+                                                Uploaded On <a rel="bookmark"><time datetime="{{ search['createdAt'] }}" pubdate="">{{ toIsoFormat(search['createdAt'], 'id_ID') }}</time></a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h2 class="alert alert-block btn-box alert-info">
+                                    {{ description }}
+                                </h2>
+                                {% for item in search['items'] %}
+                                    <article class="box-post ktz-archive post type-post status-publish format-standard hentry">
+                                        <div class="entry-body">
+                                            <div class="media-body ktz-post">
+                                                <h2 class="entry-title ktz-titlemini"><a href="{{ single_permalink(item['id'], item['title']) }}"> <b>{{ item['title'] }}...</b> </a></h2>
+                                                <div>
+                                                    <span class="entry-author vcard"><i class="glyphicon glyphicon-user"> </i> {{ item['channelTitle'] }}&nbsp;</span>
+                                                    <span class="entry-date updated"><i class="glyphicon glyphicon-time"></i> {{ toIsoFormat(item['publishedAt'], 'id_ID') }}</span>
+                                                </div>
+                                                <div>
+                                                    <a href="{{ single_permalink(item['id'], item['title']) }}" target="_blank" class="btn btn-custom blue btn-xs"><span class="fontawesome ktzfo-play"></span> Play </a>
+                                                    <a href="{{ single_permalink(item['id'], item['title']) }}" target="_blank" class="btn btn-custom green btn-xs"><span class="fontawesome ktzfo-arrow-down"></span> Download </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                {% endfor %}
+                                <br/>
+                                <div class="public-response widget">
+                                    <h5 class="widget-title">Respon Publik Terhadap {{ query }}</h3>
+                                    <ul class="comments"></ul>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="sbar col-md-3 widget-area wrapwidget" role="complementary">
+                            <aside id="execphp-2" class="widget widget_execphp">
+                                <h4 class="widget-title">
+                                    <span class="ktz-blocktitle"><i class="glyphicon glyphicon-search"></i> Lagu Terpopuler</span>
+                                </h4>
+                                <ul>
+                                    {% for item in getTopSong('7', '1274')['items'] %}
+                                        <li>
+                                            <span class="glyphicon glyphicon-music"></span>
+                                            <a href="{{ search_permalink(item['title']) }}" title="Download {{ item['title'] }} MP3"><span class="cuk"></span>{{ item['title'] }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </aside>
+                            <aside id="execphp-2" class="widget widget_execphp">
+                                <div class="execphpwidget">
+                                    <aside class="widget widget_categories">
+                                        <h4 class="widget-title"><span class="ktz-blocktitle"><i class="glyphicon glyphicon-search"></i> Latest Download</span></h4>
+                                    </aside>
+                                </div>
+                                <ul>
+                                    {% for item in getTerms('20')['items'] %}
+                                        <li>
+                                            <span class="glyphicon glyphicon-music"></span>
+                                            <a href="{{ search_permalink(item) }}" title="Download {{ ucwords(item) }} MP3"><span class="cuk"></span>{{ ucwords(item) }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </aside>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}

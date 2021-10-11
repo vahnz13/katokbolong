@@ -1,0 +1,51 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <div class="nxt-inner-content">
+        <div class="container">
+            <div class="row">
+                <section class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-9 new-content">
+                            <div class="nxt-titlepage nxt-icon text-center">
+                                <h1>Daftar Lagu {{ name }}</h1>
+                            </div>
+                            {% for item in genre['items'] %}
+                              <div class="box-post nxt-archive media">
+                                  <a href="{{ search_permalink(item['title']) }}" class="pull-left"><img src="{{ photonResize(item['image'], '96', '96', 2) }}" class="media-object" alt="{{ item['title'] }}" width="96" height="96"></a>
+                                  <div class="media-body">
+                                      <h2 class="nxt-titlemini"><a href="{{ search_permalink(item['title']) }}">{{ item['title'] }}</a></h2>
+                                      <span class="nxt-hits">{{ item['artist'] }}</span>
+                                      <span class="file-size">{{ item['genre'] }}</span>
+                                      <span class="nxt-date">{{ toIsoFormat(item['dateRelease'], 'id_ID') }}</span>
+                                  </div>
+                              </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 widget-area">
+                            <aside class="widget toplist">
+                                <h4 class="widget-title">Lagu Terpopuler</h4>
+                                <ul>
+                                    {% for item in getTopSong('7', '1274')['items'] %}
+                                        <li>
+                                            <a href="{{ search_permalink(item['title']) }}"><img class="nxt-img" src="{{ photonResize(item['image'], '320', '100', 2) }}" alt="{{ item['title'] }}" /> <span class="nxt-title">{{ strLimit(item['title'], '35') }}</span> <span class="duration">{{ toDayAgo(item['dateRelease'], 'id_ID') }}</span></a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </aside>
+                            <aside class="widget toplist">
+                                <h4 class="widget-title">Lagu Terbaru</h4>
+                                <ul>
+                                    {% for item in getTerms('20')['items'] %}
+                                        <li>
+                                            <a href="{{ search_permalink(item) }}" title="{{ ucwords(item) }}">{{ ucwords(item) }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </aside>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}

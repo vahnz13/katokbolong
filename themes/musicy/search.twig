@@ -1,0 +1,73 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <main>
+        <div class="container">
+            <form id="search-form" method="GET" action="/">
+                <h3>Temukan lagu, video dibawah!</h3>
+                <div>
+                    <input type="text" autocomplete="off" name="q" required="" spellcheck="false" placeholder="" value="" />
+                    <button type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>
+                </div>
+            </form>
+            <div class="main-content d-flex">
+                <div id="content" class="flex-fill">
+                    <h1 class="page-title">{{ query }} Mp3 Download</h1>
+                    <div class="meta-desc">
+                        {{ description }}
+                    </div>
+                    <section class="section section-tracks">
+                        <div class="items">
+                            {% for item in search['items'] %}
+                                <div class="item d-flex align-items-center">
+                                    <div class="image">
+                                        <img
+                                            src="{{ photonResize('https://ytimg.googleusercontent.com/vi/' ~ item['id'] ~ '/mqdefault.jpg', '56', '56', 0) }}"
+                                            alt="{{ item['title'] }}"
+                                            title="{{ item['title'] }}"
+                                        />
+                                    </div>
+                                    <div class="detail flex-fill">
+                                        <h2>
+                                            <a title="{{ item['title'] }}" href="{{ single_permalink(item['id'], item['title']) }}">
+                                                {{ ytClean(item['title']) }}
+                                            </a>
+                                        </h2>
+                                        <p class="d-flex">
+                                            <span><i class="fas fa-clock" aria-hidden="true"></i>{{ item['duration'] }}</span>
+                                            <span><i class="fas fa-download" aria-hidden="true"></i>{{ item['size'] }}</span>
+                                            <span><i class="fas fa-headphones" aria-hidden="true"></i>{{ item['viewCount'] }}</span>
+                                        </p>
+                                    </div>
+                                    <span class="download-btn d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-download" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                            {% endfor %}
+                            <div class="public-response">
+                                <h5>Public Response On {{ query }}</h3>
+                                <div class="comments"></div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div id="sidebar">
+                    <aside class="widget widget-terms">
+                        <h3 class="section-title">
+                            <span><i class="fas fa-search" aria-hidden="true"></i>Recent Search</span>
+                        </h3>
+                        <ul>
+                        {% for item in getTerms('30')['items'] %}
+                            <li>
+                                <a href="{{ search_permalink(item) }}" class="d-flex align-items-center">
+                                    <i class="fas fa-music"></i>
+                                    <span class="flex-fill">{{ ucwords(item) }}</span>
+                                </a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

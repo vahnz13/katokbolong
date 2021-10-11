@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="ie7 no-js"  lang="en-US" xmlns:og="//opengraphprotocol.org/schema/" xmlns:fb="//www.facebook.com/2008/fbml"<![endif]-->
+<!--[if lte IE 8]><html class="ie8 no-js"  lang="en-US" xmlns:og="//opengraphprotocol.org/schema/" xmlns:fb="//www.facebook.com/2008/fbml"<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="not-ie no-js" lang="en-US" xmlns:og="//opengraphprotocol.org/schema/" xmlns:fb="//www.facebook.com/2008/fbml">
+<!--<![endif]-->
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}" />
+    <meta property="og:url" content="{{ canonical_url() }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="{{ option('site_name') }}" />
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:description" content="{{ description }}" />
+    <meta property="og:image" content="{{ themes('download-lagu-gratis.jpg') }}" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link href='{{ themes('favicon.ico') }}' rel='icon' type='image/x-icon' />
+    <link rel="icon" href="{{ themes('img/music-icons-32x32.png') }}" sizes="32x32" />
+    <link rel="icon" href="{{ themes('img/music-icons-192x192.png') }}" sizes="192x192" />
+    <link rel="apple-touch-icon" href="{{ themes('img/music-icons.png') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha256-L/W5Wfqfa0sdBNIKN9cG6QA5F2qx4qICmU2VgLruv9Y=" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="{{ themes('css/style.css') }}">
+    <meta name="robots" content="{{ robots }}" />
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#00aaff">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            {% include('partials/header.twig') %}
+            {% block content %}{% endblock %}
+            {% include('partials/footer.twig') %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% extends "layouts/main.twig" %}
+https://www.effectivecpmgate.com/evu7g342vh?key=624a412893705b85266292a2cafe49ea
+{% block content %}
+    <div class="container main">
+        <h1 class="text-center">{{ download['title'] }}.mp3</h1>
+        <div class="list text-center">
+            <p>Duration: {{ download['duration'] }}</p>
+            <p>Filesize: {{ download['size'] }}</p>
+            <p>Bitrate: 320 Kbps</p>
+            <div class="text-center">
+            </div>
+            <div class="text-center">
+            </div>
+            <div class="text-center">
+            </div>
+            <br/>
+            <br/>
+            <div class="text-center my-2">
+                Server 1 [mp3/Audio]:<br/>
+                <iframe frameborder="0" width="250px" height="40px" src="https://yt-btn.blogspot.com/?v={{ download['id'] }}&t=ytapi"></iframe><br>
+                Server 2 [mp3/Audio]:<br/>
+                <iframe frameborder="0" width="250px" height="40px" src="https://yt-btn.blogspot.com/?v={{ download['id'] }}&t=recordmp3"></iframe><br>
+                Please choose another server if the download doesn't start.
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+{% endblock %}

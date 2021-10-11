@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta forua="true" http-equiv="Cache-Control" content="max-age=0" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="MobileOptimized" content="320" />
+        <title>{{ title }}</title>
+        <link rel="stylesheet" id="ktz-bootstrap-min-css" href="{{ themes('css/bootstrap.min.css') }}" type="text/css" media="screen, projection" />
+        <link rel="stylesheet" id="ktz-main-css-css" href="{{ themes('css/styles.css') }}" type="text/css" media="all" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:light,lightitalic,regular,regularitalic,600,600italic,bold,bolditalic,800,800italic" rel="stylesheet" type="text/css" />
+        <meta name="robots" content="{{ robots }}" />
+        <meta name="description" content="{{ description }}" />
+        <meta property="og:url" content="{{ canonical_url() }}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="{{ option('site_name') }}" />
+        <meta property="og:title" content="{{ title }}" />
+        <meta property="og:description" content="{{ description }}" />
+        <meta property="og:image" content="{{ themes('download-lagu-gratis.jpg') }}" />
+        <link rel="icon" href="{{ themes('favicon.ico') }}" type="image/gif" sizes="16x16">
+        <meta name="msapplication-TileColor" content="#0087ff" />
+        <meta name="theme-color" content="#0087ff" />
+        <style type="text/css" media="screen">
+            body {
+                background: #eee;
+                font-family: "Open Sans", sans-serif;
+                font-size: 14px;
+                font-style: normal;
+                color: #222;
+            }
+            .ktz-mainheader {
+                background: #fff;
+            }
+            .ktz-allwrap {
+                margin: 0px auto 10px auto;
+                width: 100%;
+                max-width: 860px;
+            }
+            @media only screen and (max-width: 992px) {
+                .ktz-allwrap {
+                    width: 99%;
+                }
+            }
+            .ktz-logo h1.homeblogtit a,
+            .ktz-logo h1.homeblogtit a:visited,
+            .ktz-logo h1.homeblogtit a:hover,
+            .ktz-logo .singleblogtit a,
+            .ktz-logo .singleblogtit a:hover,
+            .ktz-logo .singleblogtit a:active,
+            .ktz-logo .singleblogtit a:focus,
+            .ktz-logo .singleblogtit a:visited {
+                color: #222222;
+            }
+            .ktz-logo .desc {
+                color: #999999;
+            }
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            .ktz-logo div.singleblogtit {
+                font-family: "Open Sans", helvetica;
+                font-style: normal;
+                color: #2b2b2b;
+            }
+            a:hover,
+            a:focus,
+            a:active,
+            #breadcrumbs-wrap a:hover,
+            #breadcrumbs-wrap a:focus,
+            a#cancel-comment-reply-link:hover {
+                color: #0087ff;
+            }
+            .entry-content input[type="submit"],
+            .page-link a,
+            input#comment-submit,
+            .wpcf7 input.wpcf7-submit[type="submit"],
+            .bbp_widget_login .bbp-login-form button,
+            #wp-calendar tbody td:hover,
+            #wp-calendar tbody td:hover a,
+            .ktz-bbpsearch button,
+            a.readmore-buysingle,
+            input#comment-submit,
+            .widget_feedburner,
+            .ktz-readmore,
+            .ktz-prevnext a {
+                background: #0087ff;
+            }
+            .page-link a:hover {
+                background: #4c4c4c;
+                color: #ffffff;
+            }
+            .ktz-allwrap.wrap-squeeze,
+            .tab-comment-wrap .nav-tabs > li.active > a,
+            .tab-comment-wrap .nav-tabs > li.active > a:focus,
+            .tab-comment-wrap .nav-tabs > li.active > a:hover,
+            .tab-comment-wrap .nav-tabs > li > a:hover {
+                border-color: #0087ff;
+            }
+            .ktz_thumbnail a.link_thumbnail,
+            .owl-theme .owl-controls .owl-buttons .owl-prev span,
+            .owl-theme .owl-controls .owl-buttons .owl-next span,
+            .pagination > .active > a,
+            .pagination > .active > span,
+            .pagination > .active > a:hover,
+            .pagination > .active > span:hover,
+            .pagination > .active > a:focus,
+            .pagination > .active > span:focus {
+                background-color: #0087ff;
+            }
+            .pagination > .active > a,
+            .pagination > .active > span,
+            .pagination > .active > a:hover,
+            .pagination > .active > span:hover,
+            .pagination > .active > a:focus,
+            .pagination > .active > span:focus {
+                border-color: #0087ff #0087ff #0087ff transparent;
+            }
+            .ktz_thumbnail.ktz_thumbnail_gallery a.link_thumbnail {
+                background-color: transparent;
+            }
+            .widgets-list-layout {
+                padding: 0;
+                margin: 0;
+                list-style-type: none;
+            }
+            .widgets-list-layout li:after,
+            .widgets-list-layout li:before {
+                content: "";
+                display: table;
+            }
+            .widgets-list-layout li:after {
+                clear: both;
+            }
+            .widgets-list-layout li {
+                zoom: 1;
+                margin-bottom: 1em;
+                list-style-type: none !important;
+            }
+            .widgets-list-layout .widgets-list-layout-blavatar {
+                float: left;
+                width: 21.276596%;
+                max-width: 40px;
+                height: auto;
+            }
+            .widgets-list-layout-links {
+                float: right;
+                width: 73.404255%;
+            }
+            .widgets-list-layout span {
+                opacity: 0.5;
+            }
+            .widgets-list-layout span:hover {
+                opacity: 0.8;
+            }
+            .site-title { font-size: 30px; font-weight: bold }
+        </style>
+    </head>
+    <body class="home blog kentooz" id="top" style="position: static;">
+        <div class="ktz-allwrap">
+            {% include('partials/header.twig') %}
+            {% block content %}{% endblock %}
+            {% include('partials/footer.twig') %}
+        </div>
+        <div id="ktz-backtotop" style="display: none;">
+            <a href="#">
+                <span class="fontawesome ktzfo-double-angle-up"></span><br />
+                Top
+            </a>
+        </div>
+        <script type="text/javascript" src="{{ themes('js/jsscript.min.js') }}"></script>
+        <script type="text/javascript" src="{{ themes('js/custom.main.js') }}"></script>
+    </body>
+</html>

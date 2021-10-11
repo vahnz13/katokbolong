@@ -1,0 +1,85 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <section class="col-md-12">
+                <div class="row">
+                    <div role="main" class="main col-md-9">
+                        <section class="new-content">
+                            <article id="post-111" class="ktz-page post-111 page type-page status-publish hentry">
+                                <div class="inner-box">
+                                    <div class="entry-body clearfix">
+                                        <div class="widget-title">
+                                            <h2 class="entry-title">
+                                                Wellcome to {{ option('site_name') }}
+                                            </h2>
+                                        </div>
+                                        <p class="alert alert-block btn-box alert-info">
+                                            <strong>{{ option('site_name') }}</strong> - adalah situs download lagu terbaru 2020, download mp3 gratis, cepat dan mudah. Download gudang lagu mp3 full album terpopuler.
+                                        </p>
+                                        <div class="widget-title">
+                                            <h3 class="entry-title"><i class="glyphicon glyphicon-fire"></i> {{ option('site_name') }} Top 20</h3>
+                                        </div>
+                                        <ul class="ranked-popular-post-wrapper">
+                                            {% for i, item in getTopSong('20')['items'] %}
+                                            <li class="col-xs-12 col-sm-6 col-md-12">
+                                                <div class="popular-news-wrapper">
+                                                    <a class="news-image">
+                                                        <img
+                                                            width="80"
+                                                            height="80"
+                                                            src="{{ photonResize(item['image'], '80', '80', 2) }}"
+                                                            title="{{ item['title'] }}"
+                                                            alt="{{ item['title'] }}"
+                                                        />
+                                                    </a>
+                                                    <span class="news-rank"> {{ i+1 }}</span>
+                                                    <h4 class="news-title">
+                                                        <a title="{{ item['title'] }}" href="{{ search_permalink(item['title']) }}">
+                                                            {{ item['title'] }} MP3
+                                                        </a>
+                                                    </h4>
+                                                    <div class="news-info">
+                                                        <time datetime="{{ item['dateRelease'] }}">{{ toDayAgo(item['dateRelease'], 'id_ID') }}</time>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                        <br />
+                                        <br />
+                                    </div>
+                                </div>
+                            </article>
+                        </section>
+                    </div>
+                    <div class="sbar col-md-3 widget-area wrapwidget" role="complementary">
+                        <aside id="execphp-2" class="widget widget_execphp">
+                            <h4 class="widget-title"><span class="ktz-blocktitle">Top Download</span></h4>
+                            <ul>
+                                {% for item in getTopSong('10', '1274')['items'] %}
+                                    <li>
+                                        <span class="glyphicon glyphicon-fire"></span>
+                                        <a href="{{ search_permalink(item['title']) }}" title="Download {{ item['title'] }} MP3"><span class="cuk"></span>{{ item['title'] }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </aside>
+                        <!-- ADS SIDEBAR -->
+                        <aside id="execphp-2" class="widget widget_execphp">
+                            <h4 class="widget-title"><span class="ktz-blocktitle"> Pencarian Terakhir </span></h4>
+                            <ul>
+                                {% for item in getTerms('30')['items'] %}
+                                    <li>
+                                        <span class="glyphicon glyphicon-music"></span>
+                                        <a href="{{ search_permalink(item) }}" title="Download {{ ucwords(item) }} MP3"><span class="cuk"></span>{{ ucwords(item) }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}

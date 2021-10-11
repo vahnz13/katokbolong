@@ -1,0 +1,30 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <div class="container main">
+        <h1 class="text-center">{{ query }} Mp3 Download</h1>
+        <div class="text-center">
+        </div>
+        {% for item in search['items'] %}
+            <div class="list">
+                <div class="item">
+                    <div class="artwork"> <img width="60" height="60" alt="{{ item['title'] }}" src="{{ themes('img/music.png') }}" /> </div>
+                    <div class="meta">
+                        <h2>{{ item['title'] }}</h2>
+                        <br> Duration: {{ item['duration'] }} - Size: {{ item['size'] }} - Bitrate: 320
+                        <br>
+                        <div class="d-links dlads"> <a class="file_download" href="{{ download_permalink(item['id']) }}"><b>Download</b></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <h3 class="text-center">Recent Search</h3>
+        <div class="text-center">
+        {% for item in getTerms('20')['items'] %}
+            <a href="{{ search_permalink( item ) }}">
+                <button type="button" class="btn btn-black">{{ item }}</button>
+            </a>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}

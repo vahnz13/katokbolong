@@ -1,0 +1,59 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <div class="nxt-inner-content">
+        <div class="container">
+            <div class="row">
+                <section class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12 new-content center">
+                            <div class="nxt-single">
+                                <div class="nxt-body">
+                                    <div class="nxt-titlepage nxt-icon">
+                                        <h1>Download {{ download['title'] }}  MP3 &amp; Mp4</h1></div>
+
+                                    <div class="nxt-content nxt-wrap-content-single nxt-post">
+                                        <p>
+                                            <iframe rel="nofollow" class="aligncenter" width="90%" src="https://www.youtube.com/embed/{{ download['id'] }}" frameborder="0" allowfullscreen=""></iframe>
+                                        </p>
+                                        <div class="download">
+                                            <h4 class="widget-title">Cara / How to Download:</h4></div>
+                                        <div class="info noleft lm-bawah text-left">
+                                            <ul>
+                                                <li>klik 2x</li>
+                                                <li>Tunggu sampai converting selesai, lalu klik sekali lagi!</li>
+                                                <li>Jika lemot atau error, gunakan link download alternatif!</li>
+                                                <li><strong>Jika muncul iklan popunder / newtab, abaikan dan kembali kehalaman ini!</strong></li>
+                                            </ul>
+                                        </div>
+                                        <p style="color:red">↓↓↓↓↓↓↓</p>
+                                        <p>
+                                            <iframe style="max-height:50px;border:0px;max-width: 210px;overflow:hidden;" scrolling="no" src="https://yt-btn.blogspot.com/?v={{ download['id'] }}&t=ytapi" width="210" height="40" frameborder="0" marginwidth="0" marginheight="0"></iframe>
+                                        </p>
+                                        <p style="color:red">↑↑↑↑↑↑↑</p>
+                                        <h4>Download Video</h4>
+                                        <p style="color:red">↓↓↓↓↓↓↓</p>
+                                        <p>
+                                            <a rel="nofollow" href="https://www.y2mate.com/download-youtube/{{ download['id'] }}?source=go-lagu.com" class="btn" target="_blank">Download Mp4</a>
+                                        </p>
+                                        <p style="color:red">↑↑↑↑↑↑↑</p>
+                                        <p><span style="color:red">→</span> <a rel="nofollow" href="{{ single_permalink(download['id'], download['title']) }}"><strong>Link download lagu utama</strong></a></p>
+
+                                        <div id="share" class="nxt-share download">
+                                            <h4 class="widget-title"><span>Bagikan halaman ini:</span></h4>
+                                            <a rel="nofollow noreferrer" href="https://www.facebook.com/sharer/sharer.php?url={{ canonical_url() }}" target="_blank"><img src="{{ themes('img/fb.png') }}" title="Share to Facebook" alt="Share to Facebook" width="40" height="40"></a>
+                                            <a rel="nofollow noreferrer" href="https://twitter.com/intent/tweet?text=&url={{ canonical_url() }}" target="_blank"><img src="{{ themes('img/tw.png') }}" title="Share to Twitter" alt="Share to Twitter" width="40" height="40"></a>
+                                            <a rel="nofollow noreferrer" href="https://api.whatsapp.com/send?text={{ canonical_url() }}" target="_blank"><img src="{{ themes('img/wa.png') }}" title="Share to WhatsApp" alt="Share to WhatsApp" width="40" height="40"></a>
+                                            <a rel="nofollow noreferrer" href="https://social-plugins.line.me/lineit/share?url={{ canonical_url() }}" target="_blank"><img src="{{ themes('img/line.png') }}" title="Share to Line" alt="Share to Line" width="40" height="40"></a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}

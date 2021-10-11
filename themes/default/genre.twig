@@ -1,0 +1,24 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <main class="col-md-9 mb-4">
+        <article>
+            <h1 class="h5 border-bottom-x pb-2">Top 50 {{ name }} iTunes</h1>
+            <p class="quote border p-2 mb-4 small" align="justify">{{ option('site_name') }} is one of the best Music stream and download. You can Download high Quality MP3 Free with our YouTube to MP3 Converter. Convert any YouTube video in seconds. Simple, fast and absolutely Free Download music Mp3. This website dedicated for all music lovers in the world. </p>
+            <ul class="list-side">
+                {% for item in genre['items'] %}
+                    <li>› <a href='{{ search_permalink(item['title']) }}' title='{{ item['title'] }}'>{{ item['title'] }}</a></li>
+                {% endfor %}
+            </ul>
+        </article>
+    </main>
+    <aside class="col-md-3 mb-4">
+        <h2 class="h5 border-bottom-x pb-2">Top MP3 Download</h2>
+        <ul class="list-side">
+            {% for item in getTerms('50')['items'] %}
+                <li>›
+                    <a href="{{ search_permalink(item) }}" title="{{ ucwords(item) }}">{{ ucwords(item) }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </aside>
+{% endblock %}

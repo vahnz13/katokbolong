@@ -1,0 +1,64 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <div class="page">
+        <div class="description">
+            <b><u>{{ option('site_name') }}</u></b> adalah situs download lagu terbaru 2020, download mp3 gratis, cepat dan mudah. Download gudang lagu mp3 full album terpopuler.
+        </div>
+    </div>
+    <div class="musik">
+        <h2 class="tag" align="center">Download Lagu Mp3 Gratis 2020</h2>
+        <div class="menu">
+            <div class="posting">
+             {% for i, item in getTopSong('20')['items'] %}
+                <div class="post-lagu">
+                    <div class="image">
+                        <img
+                            src="{{ photonResize(item['image'], '40', '40', 2) }}"
+                            alt="{{ item['title'] }}"
+                            title="{{ item['title'] }}"
+                            width="40px"
+                            height="40px"
+                            itemprop="image"
+                        />
+                    </div>
+                    <h2 class="judul"><a href="{{ search_permalink(item['title']) }}" title="{{ item['title'] }}"> {{ item['title'] }} </a></h2>
+                    <div class="author">By : <span class="ket"> {{ item['artist'] }} </span></div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <h2 class="tag" align="center">Lagu Terpopuler</h2>
+        <div class="post">
+            <ul>
+            {% for item in getTopSong('10', '1274')['items'] %}
+                <li><a href="{{ search_permalink(item['title']) }}" title="{{ item['title'] }}">{{ item['title'] }}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="sidebar">
+        <h2 class="tag">Latest Download</h2>
+        <div class="post">
+            <ul>
+            {% for item in getTerms('30')['items'] %}
+                <li><a href="{{ search_permalink(item) }}" title="{{ ucwords(item) }}">{{ ucwords(item) }}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="page">
+        <div class="description">
+            <p></p>
+            <blockquote>
+                <p align="center">
+                    Disclamer: Kami tidak menyimpan file apapun pada server atau hosting kami. Semua lagu berasal dari youtube yang di konversi menggunakan pihak ketiga, Silahkan beli lagu asli di itunes atau cd nya di toko
+                    terdekat.<br />
+                </p>
+            </blockquote>
+            <p></p>
+        </div>
+    </div>
+{% endblock %}

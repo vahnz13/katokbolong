@@ -1,0 +1,36 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <main class="main container border">
+        <h1>Download Lagu MP3 • Gudang Lagu Populer</h1>
+        <p class="alert border rounded-0">
+            <strong>{{ site_domain() }}</strong> - Download Lagu Mp3 Terbaru 2019, Gudang Lagu Terbaik Gratis. Download Lagu Gratis, Gudang lagu Mp3 Indonesia, lagu barat terbaik. Download lagu Terbaru 2019 mudah, cepat, nyaman. Situs unduh yang mudah diakses untuk download lagu MP3.
+        </p>
+        <div class="row">
+            <div class="col-md-7 mb-2">
+                <h2 class="h5 font-weight-normal title-h"><i class="fa fa-music"></i> Download Lagu MP3 Terbaru</h2>
+                <ul class="list-side list-item border px-2">
+                    {% for i, item in getTopSong('50')['items'] %}
+                    <li class="media align-items-center" style="border-top: 0; position: relative;">
+                        <span class="rank-numb">{{ i+1 }}</span>
+                        <a href="{{ search_permalink(item['title']) }}" title="Download {{ item['title'] }}"><img src="{{ photonResize(item['image'], '56', '56', 0) }}" width="60" class="rounded mr-2 shadow-sm"></a>
+                        <div class="media-body align-text-bottom" style="vertical-align: top;">
+                            <h3><a href="{{ search_permalink(item['title']) }}" title="Download {{ item['title'] }}">{{ item['title'] }}</a></h3>
+                            <p class="mt-1 text-secondary small"><i class="fa fa-user"></i> {{ item['artist'] }}
+                               <br><i class="fa fa-clock-o"></i> {{ toDayAgo(item['dateRelease'], 'id_ID') }}
+                            </p>
+                        </div>
+                    </li>
+                   {% endfor %}
+                </ul>
+            </div>
+            <div class="col-md-5 mb-2">
+                <h2 class="h5 font-weight-normal title-h"><i class="fa fa-music"></i> Pencarian Populer</h2>
+                <ul class="list-side border px-2">
+                    {% for item in getTerms('20')['items'] %}
+                        <li>&rsaquo; <a href="{{ search_permalink(item) }}" title="{{ ucwords(item) }}"> {{ ucwords(item) }} </a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </main>
+{% endblock %}

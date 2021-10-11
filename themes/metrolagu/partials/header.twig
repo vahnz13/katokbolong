@@ -1,0 +1,19 @@
+        <header class="ktz-mainheader">
+            <div class="header-wrap">
+                <div class="container">
+                    <div class="clearfix">
+                        <div class="ktz-logo">
+                            <h1 class="site-title"><a href="{{ site_url() }}" title="{{ option('site_name') }}">{{ option('site_name') }}</a></h1>
+                            <div class="desc-hide">Download Lagu, Lirik Lagu, dan Video Klip Terbaru</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <form class="inputsearch" action="/" method="get">
+            <div id="inputform_wrapper">
+                <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                <input class="inputtext ui-autocomplete-input" name="q" input-autocomplete="off" type="text" id="autoinput" placeholder="Ketik Judul Lagu, Penyanyi atau Lirik" autocomplete="off" />
+                <button type="submit" class="inputbutton"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </form>

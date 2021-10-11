@@ -1,0 +1,61 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <div class="musik">
+        <h2 class="tag">Download Lagu {{ query }} MP3 dan Video MP4</h2>
+    </div>
+    <div class="page">
+        <div class="description">
+            {{ description }}
+        </div>
+    </div>
+    <div class="menu">
+        <div class="posting">
+            {% for item in search['items'] %}
+                <div class="post-lagu">
+                    <div class="image">
+                        <img
+                            src="{{ photonResize('https://ytimg.googleusercontent.com/vi/' ~ item['id'] ~ '/mqdefault.jpg', '40', '40', 2) }}"
+                            alt="{{ item['title'] }}"
+                            title="{{ item['title'] }}"
+                            width="40px"
+                            height="40px"
+                            itemprop="image"
+                        />
+                    </div>
+                    <h2 class="judul">{{ item['title'] }}</h2>
+                    <div class="author"><span class="ket">{{ item['channelTitle'] }}</span> <span class="ket">{{ toIsoFormat(item['publishedAt'], 'id_ID') }}</span></div>
+                    <div class="download">
+                        <a href="{{ single_permalink(item['id'], item['title']) }}" class="btn-orange" title="{{ item['title'] }}" rel="nofollow"> Download </a>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="public-response">
+                <h5>Public Response On {{ query }}</h3>
+                <div class="comments"></div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <h2 class="tag">Lagu Terpopuler</h2>
+        <div class="post">
+            <ul>
+            {% for item in getTopSong('10', '1274')['items'] %}
+                <li>
+                    <a href="{{ search_permalink(item['title']) }}" title="{{ item['title'] }}">{{ item['title'] }}</a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        <h2 class="tag">Latest Download</h2>
+        <div class="post">
+            <ul>
+            {% for item in getTerms('20')['items'] %}
+                <li>
+                    <a href="{{ search_permalink(item) }}" title="{{ ucwords(item) }}">{{ ucwords(item) }}</a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="clear"></div>
+{% endblock %}

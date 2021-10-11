@@ -1,0 +1,20 @@
+    <header class="ktz-mainheader">
+        <div class="header-wrap">
+            <div class="container">
+                <div class="clearfix">
+                    <div class="ktz-logo">
+                        <h2 class="site-title"><a href="{{ site_url() }}">{{ option('site_name') }}</a></h2>
+                        <div class="desc"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <form class="inputsearch" id="autoform" name="autonganu" action="/" method="GET">
+        <div id="inputform_wrapper">
+            <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+            <input class="inputtext ui-autocomplete-input" name="q" value="" type="text" id="autoinput" label="Masukkan Judul Lagu" autocomplete="off">
+            <button type="submit" class="inputbutton" name="search"><i class="glyphicon glyphicon-search"></i></button>
+        </div>
+    </form>
+    <br>

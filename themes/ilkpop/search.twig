@@ -1,0 +1,105 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <div class="ktz-inner-content">
+        <div class="container">
+            <div class="ktz-aftermenubanner"><!--header ads--></div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <section class="col-md-12">
+                    <div class="row">
+                        <div role="main" class="main col-md-9">
+                            <section class="new-content">
+                                <div class="entry-body">
+                                    <h1 class="entry-title clearfix">Download {{ query }} MP3</h1>
+                                    <div class="metasingle-aftertitle">
+                                        <div class="ktz-inner-metasingle">
+                                            <span class="entry-author vcard">
+                                                Popularized By: {{ search['items'][0]['channelTitle'] }}
+                                            </span>
+                                            <span class="entry-date updated">
+                                                Uploaded On <a rel="bookmark"><time datetime="{{ search['createdAt'] }}" pubdate="">{{ toIsoFormat(search['createdAt'], 'id_ID') }}</time></a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning">
+                                    {{ description }}
+                                </div>
+                                {% for item in search['items'] %}
+                                    <div class="box-post ktz-archive">
+                                        <div class="entry-body media">
+                                            <a href="{{ single_permalink(item['id'], item['title']) }}" class="ktz_thumbnail pull-left" title="{{ item['title'] }}">
+                                                <img
+                                                    data-cfstyle="max-width:48px"
+                                                    data-cfsrc="{{ photonResize('https://ytimg.googleusercontent.com/vi/' ~ item['id'] ~ '/mqdefault.jpg', '50', '50', 2) }}"
+                                                    class="media-object ktz-lazyload"
+                                                    alt="{{ item['title'] }}"
+                                                    width="48"
+                                                    height="48"
+                                                    style="max-width: 48px;"
+                                                    scale="0"
+                                                    src="{{ photonResize('https://ytimg.googleusercontent.com/vi/' ~ item['id'] ~ '/mqdefault.jpg', '50', '50', 2) }}"
+                                                />
+                                            </a>
+                                            <div class="media-body ktz-post">
+                                                <h2 class="ktz-titlemini">
+                                                    <a href="{{ single_permalink(item['id'], item['title']) }}" title="{{ item['title'] }}">{{ item['title'] }} </a>
+                                                </h2>
+                                                <span class="entry-author"><i class="glyphicon glyphicon-user" style="color: #333;"></i> {{ item['channelTitle'] }}</span>
+                                                <span class="entry-date"><i class="glyphicon glyphicon-time" style="color: #333;"></i> {{ toIsoFormat(item['publishedAt'], 'id_ID') }}</span>
+                                                <div class="media-body ktz-post">
+                                                    <a href="{{ single_permalink(item['id'], item['title']) }}" class="btn btn-custom blue btn-xs" title="Download {{ item['title'] }}">
+                                                        <span class="glyphicon glyphicon-download"></span> <strong>Download</strong>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                <br/>
+                                <div class="public-response widget">
+                                    <h5 class="widget-title">Respon Publik Terhadap {{ query }}</h3>
+                                    <ul class="comments"></ul>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="sbar col-md-3 widget-area wrapwidget" role="complementary">
+                            <aside class="widget widget_categories">
+                                <h4 class="widget-title"><span class="ktz-blocktitle">Top Dangdut</span></h4>
+                                <ul class="widgets-list-layout no-grav">
+                                {% for item in getTopSong('10', '1274')['items'] %}
+                                    <li>
+                                        <a href="{{ search_permalink(item['title']) }}" title="{{ item['title'] }}" class="bump-view" data-bump-view="tp">
+                                            <img
+                                                style="width: 39px; height: 39px;"
+                                                src="{{ photonResize(item['image'], '50', '50', 2) }}"
+                                                class="widgets-list-layout-blavatar"
+                                                alt="{{ item['title'] }}"
+                                                data-pin-nopin="true"
+                                                srcset="{{ photonResize(item['image'], '50', '50', 2) }}"
+                                                src-orig="{{ photonResize(item['image'], '50', '50', 2) }}"
+                                                scale="1.25"
+                                            />
+                                        </a>
+                                        <div class="widgets-list-layout-links">
+                                            <a href="{{ search_permalink(item['title']) }}" class="bump-view" data-bump-view="tp">{{ item['title'] }}</a><br />
+                                            <small>{{ toIsoFormat(item['dateRelease'], 'id_ID') }}</small>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                                <h4 class="widget-title"><span class="ktz-blocktitle">Recent Downloads</span></h4>
+                                <ul class="no-grav">
+                                    {% for item in getTerms('30')['items'] %}
+                                        <li><a href="{{ search_permalink(item) }}" title="{{ ucwords(item) }}">{{ ucwords(item) }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </aside>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}

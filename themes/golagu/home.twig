@@ -1,0 +1,77 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <div class="nxt-inner-content">
+        <div class="container">
+            <div class="row">
+                <section class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-9 new-content">
+                            <div class="nxt-titlepage nxt-icon">
+                                <h1>Download Lagu MP3 {{ "now"|date("Y") }}</h1></div>
+                            <div class="nxt-konten media"><b>{{ option('site_name') }}</b> adalah media musik digital gratis dengan jutaan link download audio mp3 dan video mp4. Dapatkan semua konten download paling lengkap dan terbaru.</div>
+                            <div class="widget-title text-center">
+                                <h3>Menu Cepat</h3></div>
+                            <ul class="menu">
+                                <li><a href="{{ playlist_permalink('baru') }}" class="btn" title="Download Lagu Terbaru">Terbaru</a></li>
+                                <li><a href="{{ playlist_permalink('hits') }}" class="btn" title="Download Lagu Populer">Hits</a></li>
+                                <li><a href="{{ genre_permalink('indo-pop') }}" class="btn" title="Download Lagu Indonesia">Indonesia</a></li>
+                                <li><a href="{{ genre_permalink('dangdut') }}" class="btn" title="Download Lagu Dangdut">Dangdut</a></li>
+                                <li><a href="{{ genre_permalink('kpop') }}" class="btn" title="Download Lagu Korea">KPop</a></li>
+                                <li><a href="{{ genre_permalink('malaysia') }}" class="btn" title="Download Lagu Malaysia">Malaysia</a></li>
+                                <li><a href="{{ genre_permalink('india') }}" class="btn" title="Download Lagu Bollywood">India</a></li>
+                                <li><a href="{{ genre_permalink('jpop') }}" class="btn" title="Download Lagu Japan">JPop</a></li>
+                                <li><a href="{{ playlist_permalink('cover') }}" class="btn" title="Download Lagu Cover">Cover</a></li>
+                                <li><a href="{{ genre_permalink('barat') }}" class="btn" title="Download Lagu Luar">Barat</a></li>
+                            </ul>
+                            <div class="widget-title text-center">
+                                <h3>Terpopuler iTunes</h3>
+                            </div>
+                            {% for item in getTopSong('10')['items'] %}
+                              <div class="box-post nxt-archive media">
+                                  <a href="{{ search_permalink(item['title']) }}" class="pull-left"><img src="{{ photonResize(item['image'], '96', '96', 2) }}" class="media-object" alt="{{ item['title'] }}" width="96" height="96"></a>
+                                  <div class="media-body">
+                                      <h2 class="nxt-titlemini"><a href="{{ search_permalink(item['title']) }}">{{ item['title'] }}</a></h2>
+                                      <span class="nxt-hits">{{ item['artist'] }}</span>
+                                      <span class="file-size">{{ item['genre'] }}</span>
+                                      <span class="nxt-date">{{ toDayAgo(item['dateRelease'], 'id_ID') }}</span>
+                                  </div>
+                              </div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-md-3 widget-area">
+                            <aside class="widget toplist">
+                                <h4 class="widget-title">Lagu Terpopuler</h4>
+                                <ul>
+                                    {% for item in getTopSong('7', '1274')['items'] %}
+                                        <li>
+                                            <a href="{{ search_permalink(item['title']) }}"><img class="nxt-img" src="{{ photonResize(item['image'], '320', '100', 2) }}" alt="{{ item['title'] }}" /> <span class="nxt-title">{{ strLimit(item['title'], '35') }}</span> <span class="duration">{{ toDayAgo(item['dateRelease'], 'id_ID') }}</span></a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </aside>
+                            <aside class="widget toplist">
+                                <h4 class="widget-title">Lagu Terbaru</h4>
+                                <ul>
+                                    {% for item in getTerms('20')['items'] %}
+                                        <li>
+                                            <a href="{{ search_permalink(item) }}" title="{{ ucwords(item) }}">{{ ucwords(item) }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </aside>
+                        </div>
+                    </div>
+                    <div class="fitur noleft">
+                        <ul>
+                            <li>Gratis</li>
+                            <li>Lengkap</li>
+                            <li>Cepat</li>
+                            <li>Mudah</li>
+                            <li>Tanpa Registrasi</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}

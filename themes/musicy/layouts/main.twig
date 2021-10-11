@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="ie7 no-js"  lang="en-US" xmlns:og="//opengraphprotocol.org/schema/" xmlns:fb="//www.facebook.com/2008/fbml"<![endif]-->
+<!--[if lte IE 8]><html class="ie8 no-js"  lang="en-US" xmlns:og="//opengraphprotocol.org/schema/" xmlns:fb="//www.facebook.com/2008/fbml"<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="not-ie no-js" lang="en-US" xmlns:og="//opengraphprotocol.org/schema/" xmlns:fb="//www.facebook.com/2008/fbml">
+<!--<![endif]-->
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="MobileOptimized" content="320" />
+        <title>{{ title }}</title>
+        <meta name="description" content="{{ description }}" />
+        <meta property="og:url" content="{{ canonical_url() }}" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="{{ option('site_name') }}" />
+        <meta property="og:title" content="{{ title }}" />
+        <meta property="og:description" content="{{ description }}" />
+        <meta property="og:image" content="{{ site_url() }}/download-lagu-gratis.jpg" />
+        <meta name="robots" content="{{ robots }}" />
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="icon" href="{{ themes('img/music-icons-32x32.png') }}" sizes="32x32" />
+        <link rel="icon" href="{{ themes('img/music-icons-192x192.png') }}" sizes="192x192" />
+        <link rel="apple-touch-icon" href="{{ themes('img/music-icons.png') }}" />
+        <link rel="stylesheet" id="wuz-roboto-font-css" href="https://fonts.googleapis.com/css2?family=Roboto%3Awght%40400%3B500%3B700&#038;display=swap" type="text/css" media="all" />
+        <link rel="stylesheet" id="wuz-style-css" href="{{ themes('css/style.css') }}" type="text/css" media="all" />
+        <script src="https://kit.fontawesome.com/396fca9eef.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="theme-color" content="#00aaff">
+    </head>
+<body>
+    {% include('partials/header.twig') %}
+    {% block content %}{% endblock %}
+    {% include('partials/footer.twig') %}
+</body>
+</html>

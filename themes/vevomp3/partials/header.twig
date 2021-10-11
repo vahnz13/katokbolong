@@ -1,0 +1,15 @@
+    <div class="header">
+        <h1><a href="{{ site_url() }}" title="Home">{{ option('site_name') }}</a></h1>
+        {{ option('site_tagline') }}
+    </div>
+    <div class="top">
+        <a class="span" href="{{ search_permalink('Lagu Barat') }}"> Lagu Barat</a>
+        <a class="span" href="/"> Home </a>
+        <a class="span" href="{{ search_permalink('Lagu Indonesia') }}"> Lagu Indonesia</a>
+    </div>
+    <div class="search">
+        <form action="/" method="GET">
+            <input type="text" name="q" placeholder="Ketik Judul Lagu Atau Nama Penyanyi" />
+            <input type="submit" value="Cari Mp3" />
+        </form>
+    </div>

@@ -1,0 +1,32 @@
+        <footer class="footer">
+            <div class="copyright">
+                <div class="container">
+                    <div class="footercredits pull-left">&copy; {{ "now"|date("Y") }} Powered by <a href="{{ site_url() }}">{{ option('site_name') }}</a> - {{ option('site_tagline') }}</div>
+                </div>
+            </div>
+        </footer>
+        {# Comment #}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function(){
+                $('.comments').trigger('click');
+            });
+            $(document).on('click', '.comments', function() {
+                $.ajax({
+                    type:'GET',
+                    url:"/api/comments?id={{ search['items'][0]['id'] }}&limit=10",
+                    success: (function (data) {
+                        $.each(data.items, function (i, item) {
+                            $('.comments').append(
+                                '<li><strong>' + item.authorDisplayName + '</strong><br/>' + item.textDisplay + '</li>'
+                            );
+                        });
+                        
+                    }),error: function (data) {
+                        $('.comments').append(
+                            'Falied Load Data..'
+                        );
+                    }
+                });
+            });
+        </script>

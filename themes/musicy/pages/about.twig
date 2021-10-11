@@ -1,0 +1,48 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <main>
+        <div class="container">
+            <form id="search-form" method="GET" action="/">
+                <h3>Temukan lagu, video dibawah!</h3>
+                <div>
+                    <input type="text" autocomplete="off" name="q" required="" spellcheck="false" placeholder="" value="" />
+                    <button type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>
+                </div>
+            </form>
+            <div class="main-content d-flex">
+                <div id="content" class="single flex-fill">
+                    <h1 class="page-title">Apa itu {{ option('site_name') }} ?</h1>
+                    <div class="content">
+                        <p>{{ ucwords(site_domain) }} adalah sebuah website media musik digital gratis dengan jutaan link download audio mp3, video mp4, dan lirik lagu. Kamu akan mendapatkan semua konten download paling lengkap dan terbaru.</p>
+                        <h4 id="sumber" class="widget-title text-center">Dari manakah sumber konten {{ option('site_name') }}?</h4>
+                        <p>Semua konten lagu atau file MP3 yang tersedia di {{ option('site_name') }} hanyalah pihak ketiga yang berasal dari YouTube.</p>
+                        <p>{{ option('site_name') }} sebenarnya adalah YouTube to Mp3 Converter, namun kami mendevelop aplikasi ini secara berbeda dari kebanyakan situs konverter pengunduh video YouTube lainnya. Banyak fitur yang lebih memudahkan kamu untuk mengunduh video YouTube menjadi Audio MP3 di {{ option('site_name') }} daripada di situs lainnya.</p>
+                        <p>Semua file yang berasal dari konverter YouTube, kami dapatkan dari situs konverter luar yang kami pasang atau embed dengan tag iframe pada halaman download. Kami bukan pemilik dan tidak punya akses untuk setiap file yang ada di halaman download yang belum diupdate.</p>
+                        <p>Untuk file MP3 pada halaman download yang sudah kami update atau perbarui, berasal dari server kami sendiri. Kami hanya memiliki akses penuh terhadap file yang kami update sendiri.</p>
+                        <h4 id="copyright" class="widget-title text-center">Apakah konten {{ option('site_name') }} legal?</h4>
+                        <p>Karena {{ option('site_name') }} adalah YouTube to Mp3 Converter, kebanyakan konten di situs kami tidak memiliki copyright atau hak cipta, dimana pengguna YouTube kebanyakan perorangan seperti Vlog, Cover, Remix, Gaming dan lainnya. Namun banyak juga yang memiliki hak cipta.</p>
+                        <blockquote>Hubungi kami lewat email ke kampdev@gmail.com untuk saran / kritik / kerjasama / penghapusan / hak cipta dan lainnya, kami akan memproses keluhan kamu kurang dari 24 jam.</blockquote>
+                    </div>
+                </div>
+                <div id="sidebar">
+                    <aside class="widget widget-terms">
+                        <h3 class="section-title">
+                            <span><i class="fas fa-search" aria-hidden="true"></i>Recent Search</span>
+                        </h3>
+                        <ul>
+                        {% for item in getTerms('30')['items'] %}
+                            <li>
+                                <a href="{{ search_permalink(item) }}" class="d-flex align-items-center">
+                                    <i class="fas fa-music"></i>
+                                    <span class="flex-fill">{{ ucwords(item) }}</span>
+                                </a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

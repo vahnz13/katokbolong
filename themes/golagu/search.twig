@@ -1,0 +1,57 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <div class="nxt-inner-content">
+        <div class="container">
+            <div class="row">
+                <section class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-9 new-content">
+                            <div class="nxttitle nxt-icon text-center">
+                                <h1>Download Lagu {{ query }} MP3 dan Video MP4</h1>
+                            </div>
+                            <div class="metasingle-aftertitle">
+                                <span class="nxt-author">{{ option('site_name') }}</span><span class="nxt-date">{{ toIsoFormat(search['createdAt'], 'id_ID') }}</span>
+                            </div>
+                            <div class="nxt-konten media">{{ description }}</div>
+                            {% for item in search['items'] %}
+                                <div class="box-post nxt-archive media">
+                                    <a href="{{ single_permalink(item['id'], item['title']) }}" class="pull-left"><img src="{{ photonResize('https://ytimg.googleusercontent.com/vi/' ~ item['id'] ~ '/mqdefault.jpg', '96', '96', 2) }}" class="media-object" alt="{{ item['title'] }}" width="96" height="96"> <span class="duration">{{ item['duration'] }}</span></a>
+                                    <div class="media-body">
+                                        <h2 class="nxt-titlemini"><a href="{{ single_permalink(item['id'], item['title']) }}">{{ item['title'] }}...</a></h2><span class="file-size">{{ item['size'] }}</span> <span class="nxt-hits">{{ item['viewCount'] }}</span><span class="nxt-date">{{ toIsoFormat(item['publishedAt'], 'id_ID') }}</span>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <div class="public-response">
+                                <h5>Public Response On {{ query }}</h3>
+                                <br/>
+                                <div class="comments"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 widget-area">
+                            <aside class="widget toplist">
+                                <h4 class="widget-title">Lagu Terpopuler</h4>
+                                <ul>
+                                    {% for item in getTopSong('7', '1274')['items'] %}
+                                        <li>
+                                            <a href="{{ search_permalink(item['title']) }}"><img class="nxt-img" src="{{ photonResize(item['image'], '320', '100', 2) }}" alt="{{ item['title'] }}" /> <span class="nxt-title">{{ strLimit(item['title'], '35') }}</span> <span class="duration">{{ toDayAgo(item['dateRelease'], 'id_ID') }}</span></a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </aside>
+                            <aside class="widget toplist">
+                                <h4 class="widget-title">Lagu Terbaru</h4>
+                                <ul>
+                                    {% for item in getTerms('20')['items'] %}
+                                        <li>
+                                            <a href="{{ search_permalink(item) }}" title="{{ ucwords(item) }}">{{ ucwords(item) }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </aside>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}

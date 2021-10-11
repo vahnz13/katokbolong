@@ -1,0 +1,33 @@
+        <footer class="footer">
+            <div class="container"></div>
+            <div class="copyright">
+                <nav class="ktz-footermenu"><div class="container"></div></nav>
+                <div class="container">
+                    <div class="footercredits pull-left">&copy; {{ "now"|date("Y") }} <a href="/">{{ option('site_name') }}</a>, {{ option('site_tagline') }}</div>
+                </div>
+            </div>
+        </footer>
+        {# Comment #}
+        <script>
+            $(document).ready(function(){
+                $('.comments').trigger('click');
+            });
+            $(document).on('click', '.comments', function() {
+                $.ajax({
+                    type:'GET',
+                    url:"/api/comments?id={{ search['items'][0]['id'] }}&limit=10",
+                    success: (function (data) {
+                        $.each(data.items, function (i, item) {
+                            $('.comments').append(
+                                '<li><strong>' + item.authorDisplayName + '</strong><br/>' + item.textDisplay + '</li>'
+                            );
+                        });
+                        
+                    }),error: function (data) {
+                        $('.comments').append(
+                            'Falied Load Data..'
+                        );
+                    }
+                });
+            });
+        </script>

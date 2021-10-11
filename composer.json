@@ -1,0 +1,33 @@
+{
+    "name": "kampdev/kamp3-lite",
+    "type": "project",
+    "description": "Simple PHP Mp3 Search Engine built on Slim Framework.",
+    "require": {
+        "php": "^7.2",
+        "ext-json": "*",
+        "slim/slim": "^4.0",
+        "slim/psr7": "^1.0",
+        "php-di/php-di": "^6.0",
+        "slim/twig-view": "^3.0",
+        "vlucas/phpdotenv": "^4.1",
+        "thepixeldeveloper/sitemap": "^5.1",
+        "guzzlehttp/guzzle": "^6.5",
+        "jeremykendall/php-domain-parser": "^5.6",
+        "phpfastcache/phpfastcache": "^8.0",
+        "nesbot/carbon": "^2.35",
+        "stichoza/google-translate-php": "^4.1"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.0",
+        "zeuxisoo/slim-whoops": "0.7.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "app/Helpers/Functions/Common.php",
+            "app/Helpers/Functions/Permalinks.php"
+        ]
+    }
+}

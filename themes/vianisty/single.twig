@@ -1,0 +1,60 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <main class="col-md-8 mb-4">
+        <article>
+            <h1 class="h5 border-bottom-x pb-2">{{ single['title'] }}</h1>
+            <div class="wrap-video d-block border-bottom  mb-2" align="center">
+                <iframe rel="nofollow" src="https://www.youtube.com/embed/{{ single['id'] }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <table class="table table-responsive-sm table-striped border p-2">
+                <tbody>
+                    <tr>
+                        <td>Title</td>
+                        <td>: {{ single['title'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Duration</td>
+                        <td>: {{ single['duration'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Size</td>
+                        <td>: {{ single['size'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Views</td>
+                        <td>: {{ single['viewCount'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Date Release</td>
+                        <td>: {{ toIsoFormat(single['publishedAt']) }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <center>
+                <div class='btn-dwn px-20' align='center'>
+                    <br />
+                    <a href="{{ download_permalink(single['id']) }}"><button class="btn btn-primary mb-1"><b><i class="fas fa-cloud-download-alt mr-1"></i>Download Now</b></button></a>
+                    <br />
+                    <br />
+                </div>
+                <label><small><b>Tips : </b>Click <b> Download MP3/MP4</b>, Wait for <b>Initialize</b>, and then Click <b>Download</b> to Process the file.</small></label>
+                <p>Choose one server that works.</p>
+            </center>
+            <blockquote class="border blockquote p-3">
+                <p class="m-0" align="justify"><em> We hope if you download {{ single['title'] }} just for the review purpose only. and then if you like the song {{ single['title'] }} don't forget to buy the orginal one to support the singers. you also can download {{ single['title'] }} for legal on Apple Music or iTunes officiall music artist. </em></p>
+            </blockquote>
+        </article>
+    </main>
+    <aside class="col-md-4 mb-4">
+        <h2 class="title-h h5">Download Lagu Terpopuler</h2>
+        <ul class="list-side">
+        {% for item in getTerms('30')['items'] %}
+            <li>
+                <a href="{{ search_permalink(item) }}" title="{{ ucwords(item) }}">
+                    <span>{{ ucwords(item) }}</span>
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    </aside>
+{% endblock %}

@@ -1,0 +1,37 @@
+        <footer class="footer">
+            <div class="copyright">
+                <div class="container">
+                    <div class="footercredits">
+                        <center>
+                            Download Lagu Mp3 Terbaik 2020, Gudang Lagu Terbaru Gratis<br />
+                            <strong>Download Lagu Mp3 Terbaru 2020, Gudang Lagu Terbaik Gratis. Gudang lagu Mp3 Indonesia, lagu barat terbaik.</strong><br />
+                            <br />
+                            <p><a style="color: #222;" href="/">{{ option('site_name') }}</a> &copy; {{ "now"|date("Y") }} {{ option('site_tagline') }}</p>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script>
+            $(document).ready(function(){
+                $('.comments').trigger('click');
+            });
+            $(document).on('click', '.comments', function() {
+                $.ajax({
+                    type:'GET',
+                    url:"/api/comments?id={{ search['items'][0]['id'] }}&limit=10",
+                    success: (function (data) {
+                        $.each(data.items, function (i, item) {
+                            $('.comments').append(
+                                '<li><strong>' + item.authorDisplayName + '</strong><br/>' + item.textDisplay + '</li>'
+                            );
+                        });
+                        
+                    }),error: function (data) {
+                        $('.comments').append(
+                            'Falied Load Data..'
+                        );
+                    }
+                });
+            });
+        </script>

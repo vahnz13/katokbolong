@@ -1,0 +1,47 @@
+        <footer class="col-md-12 pt-4 my-1 border-top">
+            <center>
+                <a href="{{ genre_permalink('pop') }}">Pop</a> • 
+                <a href="{{ genre_permalink('kpop') }}">K-Pop</a> • 
+                <a href="{{ genre_permalink('dangdut') }}">Dangdut</a> • 
+                <a href="{{ genre_permalink('rock') }}">Rock</a> • 
+                <a href="{{ playlist_permalink('dj-remix') }}">Dj Remix</a> • 
+                <a href="{{ search_permalink('mp3 juice') }}">Mp3 Juice</a> • 
+                <a href="{{ search_permalink('metrolagu') }}">MetroLagu</a> • 
+                <a href="{{ search_permalink('stafaband') }}">Stafaband</a> • 
+                <a href="{{ search_permalink('gaana') }}">Gaana</a><br/> 
+                <a href="{{ search_permalink('chart lagu 2020') }}">Download Lagu 2020 Gratis</a> • 
+                <a href="{{ search_permalink('top lagu indonesia') }}">Download Top Lagu Indonesia</a> •
+                <a href="{{ search_permalink('top lagu terbaru') }}">Gudang Lagu Terbaru</a>
+                <hr>
+                <a href="{{ site_url() }}"> Home </a> • 
+                <a href="{{ page_permalink('about') }}">About</a>
+                <p class="mb-0">&copy; {{ "now"|date("Y") }}. All Rights Reserved. {{ ucwords(site_domain) }}</p>
+            </center>
+        </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+
+        {# Comment #}
+        <script>
+            $(document).ready(function(){
+                $('.comments').trigger('click');
+            });
+            $(document).on('click', '.comments', function() {
+                $.ajax({
+                    type:'GET',
+                    url:"/api/comments?id={{ search['items'][0]['id'] }}&limit=10",
+                    success: (function (data) {
+                        $.each(data.items, function (i, item) {
+                            $('.comments').append(
+                                '<b>' + item.authorDisplayName + '</b><br/>' + item.textDisplay + '<br/><br/>'
+                            );
+                        });
+                        
+                    }),error: function (data) {
+                        $('.comments').append(
+                            'Falied Load Data..'
+                        );
+                    }
+                });
+            });
+        </script>

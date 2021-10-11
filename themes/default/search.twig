@@ -1,0 +1,50 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <main class="col-md-9 mb-4">
+        <article>
+            <h1 class="h5 border-bottom-x pb-2">Download {{ query }} Mp3 Song</h1>
+            <p class="quote border p-2 mb-4 small" align="justify">
+                {{ description }}
+            </p>
+        </article>
+        {% for item in search['items'] %}
+            <article>
+                <h2 class="h5">
+                    <a href="{{ single_permalink(item['id'], item['title']) }}" title="{{ item['title'] }}"><b>{{ item['title'] }}</b></a>
+                </h2>
+                <p class="text-muted small">
+                    <i class="fas fa-user mr-2"></i>{{ item['channelTitle'] }} | <i class="fas fa-clock mr-1"></i>{{ item['duration'] }} | <i class="fas fa-eye mr-1"></i>{{ item['viewCount'] }}
+                </p>
+                <p>
+                    {{ strLimit(item['description'], '150') }}
+                </p>
+                <a href="{{ single_permalink(item['id'], item['title']) }}"><button class="btn btn-danger border-0 btn-sm p-1 px-2 mx-1 mb-1"><b><i class="fa fa-play mr-1"></i>Play</b></button></a>
+                <a href="{{ single_permalink(item['id'], item['title']) }}"><button class="ovo_url btn btn-primary border-0 btn-sm p-1 px-2 mx-1 mb-1"><b><i class="fas fa-cloud-download-alt mr-1"></i>Download</b></button></a>
+            </article>
+            <hr>
+        {% endfor %}
+        {# Comment #}
+        <div class="public-response">
+            <h5>Public Response On {{ query }}</h3>
+            <div class="comments"></div>
+        </div>
+    </main>
+    <aside class="col-md-3 mb-4">
+        <h2 class="h5 border-bottom-x pb-2">Top Song iTunes</h2>
+        <ul class="list-side">
+            {% for item in getTopSong('10')['items'] %}
+                <li>›
+                    <a href="{{ search_permalink(item['title']) }}" title="{{ ucwords(item['title']) }}">{{ ucwords(item['title']) }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <h2 class="h5 border-bottom-x pb-2">Top MP3 Download</h2>
+        <ul class="list-side">
+            {% for item in getTerms('50')['items'] %}
+                <li>›
+                    <a href="{{ search_permalink(item) }}" title="{{ ucwords(item) }}">{{ ucwords(item) }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </aside>
+{% endblock %}

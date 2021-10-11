@@ -1,0 +1,97 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <div class="ktz-inner-content">
+        <div class="container">
+            <div class="row">
+                <section class="col-md-12">
+                    <div class="row">
+                        <div role="main" class="main col-md-9">
+                            <section class="new-content">
+                                <div class="widget-title">
+                                    <h1 class="ktz-titlepage">Download {{ single['title'] }} MP3 &amp; MP4 </h1>
+                                </div>
+                                <div class="menu">
+                                    <center>
+                                        <table width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width:150px; border:none"><img width="150px" src="{{ photonResize('https://ytimg.googleusercontent.com/vi/' ~ single['id'] ~ '/mqdefault.jpg', '150', '150', 2) }}"></td>
+                                                    <td valign="top" style="padding-left:10px; border:none">
+                                                        Name : {{ single['title'] }} 
+                                                        <br/> Duration : {{ single['duration'] }} 
+                                                        <br/> Size : {{ single['size'] }} 
+                                                        <br/> Views : {{ single['viewCount'] }} 
+                                                        <br/> Sample Rate: 48kHz
+                                                        <br/> Audio Channels: Stereo
+                                                        <br/> Update : {{ toIsoFormat(single['publishedAt'], 'id_ID') }}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </center>
+                                    <br>
+                                    <center>
+                                        <audio src="https://m.youtube.com/watch?v={{ single['id'] }}" type="video/youtube" style="width: 90%; margin-bottom: -5px;">Your browser does not support the audio element</audio>
+                                        <br>
+                                        <br>
+                                        <a href="{{ download_permalink(single['id']) }}" class="download-album"><i class="glyphicon glyphicon-music"></i> Download MP3 / Mp4 </a>
+                                        <br>
+                                        <br> If the download link is an error or ad appears, try again :D
+                                        <br>
+                                        <br>
+                                        <br> Share <a class="share-btn facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ canonical_url() }}">Facebook</a><a class="share-btn twitter" href="https://twitter.com/share?url={{ canonical_url() }}&amp;text={{ single['title'] }}">Twitter</a>
+                                    </center>
+                                    <br>
+                                    <div class="lirik" align="center">
+                                    {{ autop(single['description'])|raw }}
+                                    </div>
+                                </div>
+                                <nav id="nav-index"></nav>
+                            </section>
+                        </div>
+                        <div class="sbar col-md-3 widget-area wrapwidget" role="complementary">
+                            <aside id="execphp-2" class="widget widget_execphp">
+                                <div class="execphpwidget">
+                                    <aside class="widget widget_categories">
+                                        <h4 class="widget-title"><span class="ktz-blocktitle"><i class="glyphicon glyphicon-search"></i> Lagu Bagus Lainnya</span></h4>
+                                    </aside>
+                                </div>
+                                <ul>
+                                    {% for item in getRelated( single['id'], '10')['items'] %}
+                                        <li>
+                                            <span class="glyphicon glyphicon-fire"></span>
+                                            <a href="{{ single_permalink(item['id'], item['title']) }}" title="{{ item['title'] }}"><span class="cuk"></span>{{ item['title'] }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </aside>
+                            <aside id="execphp-2" class="widget widget_execphp">
+                                <div class="execphpwidget">
+                                    <aside class="widget widget_categories">
+                                        <h4 class="widget-title"><span class="ktz-blocktitle"><i class="glyphicon glyphicon-search"></i> Top MP3 Download</span></h4>
+                                    </aside>
+                                </div>
+                                <ul>
+                                    {% for item in getTerms('30')['items'] %}
+                                        <li>
+                                            <span class="glyphicon glyphicon-music"></span>
+                                            <a href="{{ search_permalink(item) }}" title="Download {{ ucwords(item) }} MP3"><span class="cuk"></span>{{ ucwords(item) }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </aside>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelement-and-player.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('audio').mediaelementplayer();
+        })
+    </script>
+{% endblock %}

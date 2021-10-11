@@ -1,0 +1,10 @@
+    <header class="col-md-12 py-2 mb-4">
+        <center>
+            <div class="logo mb-3"><a href="{{ site_url() }}" title="{{ option('site_name') }} - {{ option('site_tagline') }}">{{ strtoupper(option('site_name')) }}</a></div>
+            <div class='search-box'>
+                <form class='search-form' action="/" id="suggest" method="GET">
+                    <input id="search-query" name="q" type="text" placeholder="Search by music or artist here.." required autocomplete="off">
+                </form>
+            </div>
+        </center>
+    </header>

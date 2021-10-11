@@ -1,0 +1,14 @@
+{% extends "layouts/main.twig" %}
+https://www.effectivecpmgate.com/evu7g342vh?key=624a412893705b85266292a2cafe49ea
+{% block content %}
+    <div class="container main">
+        <h1 class="text-center">Latest Mp3 Songs</h1>
+        <div class="text-center">
+        </div>
+        <div class="list">
+        {% for item in getTerms('20')['items'] %}
+            <div class="item"> &#x266A; <a href="{{ search_permalink( item ) }}"><h2>{{ item }}</h2></a> </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}

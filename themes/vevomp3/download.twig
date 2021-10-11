@@ -1,0 +1,39 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <div class="musik">
+        <h2 class="tag">Download {{ download['title'] }} Mp3</h2>
+    </div>
+    <div class="post">
+         <div class="text-center">
+            <p>
+                <iframe rel="nofollow" class="aligncenter" width="90%" src="https://www.youtube.com/embed/{{ download['id'] }}" frameborder="0" allowfullscreen=""></iframe>
+            </p>
+            <br/>
+            <br/>
+            <div class="download">
+                <h4 class="tag">How to Download:</h4></div>
+            <div class="info noleft lm-bawah text-left">
+                <ul>
+                    <li>klik 2x</li>
+                    <li>Tunggu sampai converting selesai, lalu klik sekali lagi!</li>
+                    <li>Jika lemot atau error, gunakan link download alternatif!</li>
+                    <li><strong>Jika muncul iklan popunder / newtab, abaikan dan kembali kehalaman ini!</strong></li>
+                </ul>
+            </div>
+            <br/>
+            <br/>
+            <p style="color:yellow">↓↓↓↓↓↓↓</p>
+            <p>
+                <iframe style="max-height:40px;border:0px;max-width: 310px;overflow:hidden;" scrolling="no" src="https://yt-btn.blogspot.com/?v={{ download['id'] }}&t=ytapi" rameborder="0" marginwidth="0" marginheight="0"></iframe>
+            </p>
+            <p style="color:yellow">↑↑↑↑↑↑↑</p>
+            <h4>Alternative Server</h4>
+            <p style="color:yellow">↓↓↓↓↓↓↓</p>
+            <p>
+                <iframe style="max-height:40px;border:0px;max-width: 310px;overflow:hidden;" scrolling="no" src="https://yt-btn.blogspot.com/?v={{ download['id'] }}&t=recordmp3" frameborder="0" marginwidth="0" marginheight="0"></iframe>
+            </p>
+            <p style="color:yellow">↑↑↑↑↑↑↑</p>
+            <p><span style="color:yellow">→</span> <a rel="nofollow" href="{{ single_permalink(download['id'], download['title']) }}"><strong>Link download lagu utama</strong></a></p>
+        </div>
+    </div>
+{% endblock %}

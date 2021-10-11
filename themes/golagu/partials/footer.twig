@@ -1,0 +1,33 @@
+        <footer class="footer">
+            <div class="copyright container">
+                <div class="nxt-footmenu">
+                    <span class="nxt-home"><a href="/">Beranda</a></span>
+                    <span class="nxt-icon-xs nxt-left"><a href="{{ page_permalink('about') }}">Tentang Kami</a></span>
+                </div>
+                &copy; {{ "now"|date("Y") }} {{ ucwords(site_domain) }}, layanan musik digital gratis dengan jutaan konten download lagu dan video.
+            </div>
+        </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function(){
+                $('.comments').trigger('click');
+            });
+            $(document).on('click', '.comments', function() {
+                $.ajax({
+                    type:'GET',
+                    url:"/api/comments?id={{ search['items'][0]['id'] }}&limit=10",
+                    success: (function (data) {
+                        $.each(data.items, function (i, item) {
+                            $('.comments').append(
+                                '<b>' + item.authorDisplayName + '</b><br/>' + item.textDisplay + '<br/><br/>'
+                            );
+                        });
+                        
+                    }),error: function (data) {
+                        $('.comments').append(
+                            'Falied Load Data..'
+                        );
+                    }
+                });
+            });
+        </script>

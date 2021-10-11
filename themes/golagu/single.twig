@@ -1,0 +1,94 @@
+{% extends "layouts/main.twig" %}
+{% block content %}
+    <div class="nxt-inner-content">
+        <div class="container">
+            <div class="row">
+                <section class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-9 new-content">
+                            <div class="nxt-single">
+                                <div class="nxt-body">
+                                    <div class="nxttitle nxt-icon">
+                                        <h1>{{ single['title'] }}</h1>
+                                    </div>
+                                    <div class="metasingle-aftertitle">
+                                        <span class="nxt-author">{{ single['channelTitle'] }}</span> <span class="nxt-hits">{{ single['viewCount'] }} </span> <span class="nxt-date">{{ toDayAgo(single['createdAt'], 'id_ID') }}</span>
+                                    </div>
+                                    <div class="nxt-content nxt-wrap-content-single nxt-post">
+                                        <p class="nxt-konten media"><img class="media-object pull-left" src="{{ photonResize('https://ytimg.googleusercontent.com/vi/' ~ single['id'] ~ '/mqdefault.jpg', '180', '180', 2) }}" alt="{{ single['title'] }}  width="120" height="120"> Download <strong>{{ single['title'] }}</strong> dengan High Quality Audio MP3 dan HD Video MP4, di-upload oleh <strong>{{ single['uploader'] }}</strong>. Dapatkan lagu dan video <strong>{{ single['title'] }}</strong> secara gratis, mudah, dan cepat hanya di <strong>{{ site_domain }}</strong>!</p>
+                                        
+                                        <audio class="aligncenter" src="https://m.youtube.com/watch?v={{ single['id'] }}" type="video/youtube" style="width: 90%; margin-bottom: -5px;">Your browser does not support the audio element</audio>
+                                        
+                                        <div class="download noleft">
+                                            <ul class="dl-list">
+                                                <li><a class="btn" href="{{ download_permalink(single['id']) }}" rel="nofollow noopener noreferrer">Download Now</a></li>
+                                                <li><a rel="nofollow" class="btn red" href="https://music.youtube.com/watch?v={{ single['id'] }}" target="_blank">Youtube Music</a></li>
+                                                <li><a class="btn dots" href="#info">Info &amp; Statistik</a></li>
+                                                <li><a class="btn dots" href="#share">Share</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <blockquote><strong>Peringatan!</strong> Gunakan lagu dari {{ site_domain() }} sebagai preview saja, jika kamu suka dengan lagu <strong>{{ single['title'] }}</strong>, lebih baik kamu membeli atau download dan streaming secara legal. Kamu juga bisa mendukung artis dengan mengikuti akun sosial media dan menonton konser mereka.</blockquote>
+                                        <div id="info" class="download">
+                                            <h4 class="widget-title">Info &amp; Statistik</h4></div>
+                                        <div class="info noleft">
+                                            <img class="aligncenter" src="{{ photonResize('https://ytimg.googleusercontent.com/vi/' ~ single['id'] ~ '/mqdefault.jpg', '320', '180', 2) }}" alt="Last Child - Ketidakrelaanku" width="320" height="180">
+                                            <ul>
+                                                <li>Judul: <strong>{{ single['title'] }}</strong></li>
+                                                <li>Video oleh: <strong>{{ single['channelTitle'] }}</strong></li>
+                                                <li>Waktu putar: <strong>{{ single['duration'] }}</strong></li>
+                                                <li>Ukuran: <strong>{{ single['size'] }}</strong></li>
+                                                <li>Dilihat: <strong>{{ single['viewCount'] }}</strong></li>
+                                                <li>Audio: <strong>44,1 kHz, Stereo, 128 kb/s, MP3</strong></li>
+                                                <li>Dirilis: <strong>{{ toDayAgo(single['publishedAt'], 'id_ID') }}</strong></li>
+                                                <li>Diperbarui: <strong>{{ toDayAgo(single['createdAt'], 'id_ID') }}</strong></li>
+                                            </ul>
+                                        </div>
+
+                                        <div id="share" class="nxt-share download">
+                                            <h4 class="widget-title"><span>Bagikan halaman ini:</span></h4>
+                                            <a rel="nofollow noreferrer" href="https://www.facebook.com/sharer/sharer.php?url={{ canonical_url() }}" target="_blank"><img src="{{ themes('img/fb.png') }}" title="Share to Facebook" alt="Share to Facebook" width="40" height="40"></a>
+                                            <a rel="nofollow noreferrer" href="https://twitter.com/intent/tweet?text=&url={{ canonical_url() }}" target="_blank"><img src="{{ themes('img/tw.png') }}" title="Share to Twitter" alt="Share to Twitter" width="40" height="40"></a>
+                                            <a rel="nofollow noreferrer" href="https://api.whatsapp.com/send?text={{ canonical_url() }}" target="_blank"><img src="{{ themes('img/wa.png') }}" title="Share to WhatsApp" alt="Share to WhatsApp" width="40" height="40"></a>
+                                            <a rel="nofollow noreferrer" href="https://social-plugins.line.me/lineit/share?url={{ canonical_url() }}" target="_blank"><img src="{{ themes('img/line.png') }}" title="Share to Line" alt="Share to Line" width="40" height="40"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 widget-area">
+                            <aside class="widget toplist">
+                                <h4 class="widget-title">Lagu Terpopuler</h4>
+                                <ul>
+                                    {% for item in getRelated( single['id'], '7')['items'] %}
+                                        <li>
+                                            <a href="{{ single_permalink(item['id'], item['title']) }}"><img class="nxt-img" src="{{ photonResize('https://ytimg.googleusercontent.com/vi/' ~ item['id'] ~ '/mqdefault.jpg', '320', '100', 2) }}" alt="{{ item['title'] }}" /> <span class="nxt-title">{{ strLimit(item['title'], '35') }}</span> <span class="duration">{{ toDayAgo(item['publishedAt'], 'id_ID') }}</span></a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </aside>
+                            <aside class="widget toplist">
+                                <h4 class="widget-title">Lagu Terbaru</h4>
+                                <ul>
+                                    {% for item in getTerms('20')['items'] %}
+                                        <li>
+                                            <a href="{{ search_permalink(item) }}" title="{{ ucwords(item) }}">{{ ucwords(item) }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </aside>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelement-and-player.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('audio').mediaelementplayer();
+        })
+    </script>
+{% endblock %}
